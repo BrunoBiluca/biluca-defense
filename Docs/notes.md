@@ -22,3 +22,9 @@
 - Importar a lista no BuildingManager
   - Criar pasta chamada Resources
   - `Resources.Load<BuildingTypeList>("BuildingTypeList")`
+
+# Resource Generator
+
+- timer
+- timerMax
+

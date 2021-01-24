@@ -1,37 +1,47 @@
+using System;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class BuildingManager : MonoBehaviour {
+
+    public static BuildingManager Instance { get; private set; }
 
     private Camera mainCamera;
 
     private BuildingFactorySO buildingFactory;
-    private BuildingSO currentBuilding;
 
-    void Start() {
+    public BuildingSO CurrentBuilding { get; set; }
+
+    void Awake() {
+        Instance = this;
         mainCamera = Camera.main;
 
-        buildingFactory = Resources.Load<BuildingFactorySO>("BuildingFactorySO");
-        currentBuilding = buildingFactory.GetByIndex(0);
+        buildingFactory = Resources.Load<BuildingFactorySO>("building_factory_lvl_0");
+        CurrentBuilding = buildingFactory.GetByIndex(0);
     }
 
     void Update() {
         if(Input.GetMouseButtonDown(0)) {
-            Instantiate(currentBuilding.Prefab, GetWorldPosition(), Quaternion.identity);
+            if(CurrentBuilding != null
+                && !EventSystem.current.IsPointerOverGameObject()) {
+
+                Instantiate(CurrentBuilding.Prefab, GetWorldPosition(), Quaternion.identity);
+            }
         }
 
         // TODO: esses ifs tem que virar uma classe de mapping de shortcuts, 
         // bem no estilo de CommandPattern
         if(Input.GetKeyDown(KeyCode.W)) {
-            Debug.Log(KeyCode.W.ToString());
-            currentBuilding = buildingFactory.GetByShortcut(KeyCode.W.ToString());
+            CurrentBuilding = buildingFactory.GetByShortcut(KeyCode.W.ToString());
         }
 
         if(Input.GetKeyDown(KeyCode.G)) {
-            currentBuilding = buildingFactory.GetByShortcut(KeyCode.G.ToString());
+            CurrentBuilding = buildingFactory.GetByShortcut(KeyCode.G.ToString());
         }
 
         if(Input.GetKeyDown(KeyCode.S)) {
-            currentBuilding = buildingFactory.GetByShortcut(KeyCode.S.ToString());
+            CurrentBuilding = buildingFactory.GetByShortcut(KeyCode.S.ToString());
         }
     }
 
