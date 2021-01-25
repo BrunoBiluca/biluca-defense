@@ -16,6 +16,16 @@ public class BuildingTypeSelectUI : MonoBehaviour {
         CreateBuildingSelectUI();
     }
 
+    void Start() {
+        BuildingManager.Instance.OnCurrentBuildingChanged += BuildingManager_OnCurrentBuildingChanged;
+    }
+
+    private void BuildingManager_OnCurrentBuildingChanged(
+        object sender, BuildingManager.OnCurrentBuildingChangedEventsArgs e
+    ) {
+        UpdateBuildingSelectUI();
+    }
+
     private void CreateBuildingSelectUI() {
         var buildingList = Resources.Load<BuildingFactorySO>("building_factory_lvl_0");
 
@@ -28,11 +38,9 @@ public class BuildingTypeSelectUI : MonoBehaviour {
 
         arrowButton = Instantiate(buildingOptionTemplate, transform);
         arrowButton.gameObject.SetActive(true);
-        arrowButton
-            .GetComponent<RectTransform>()
+        arrowButton.GetComponent<RectTransform>()
             .anchoredPosition = new Vector2(buttonOffset * index++, 0);
-        arrowButton
-            .Find("image")
+        arrowButton.Find("image")
             .GetComponent<Image>().sprite = arrowButtonSprite;
         arrowButton.GetComponent<Button>().onClick.AddListener(() => {
             BuildingManager.Instance.CurrentBuilding = null;
@@ -55,11 +63,6 @@ public class BuildingTypeSelectUI : MonoBehaviour {
 
             buttonOptions.Add(building, buildingOption);
         }
-    }
-
-    // Update is called once per frame
-    void Update() {
-        UpdateBuildingSelectUI();
     }
 
     private void UpdateBuildingSelectUI() {

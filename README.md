@@ -19,3 +19,9 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 - UI para selecionar as construções
 
 ![](Docs/selected_buttons.PNG)
+
+# Dia 5
+
+- Criação do fantasma das construções para dar um preview ao jogador de como a construção estará no mundo
+
+![](Docs/building_ghost.PNG)

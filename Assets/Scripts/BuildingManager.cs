@@ -7,15 +7,30 @@ public class BuildingManager : MonoBehaviour {
 
     public static BuildingManager Instance { get; private set; }
 
-    private Camera mainCamera;
+    public event EventHandler<OnCurrentBuildingChangedEventsArgs> OnCurrentBuildingChanged;
+
+    public class OnCurrentBuildingChangedEventsArgs : EventArgs {
+        public BuildingSO CurrentBuilding { get; set; }
+    }
+
+    private BuildingSO currentBuilding;
+    public BuildingSO CurrentBuilding {
+        get { return currentBuilding; }
+        set {
+            currentBuilding = value;
+            OnCurrentBuildingChanged?.Invoke(
+                this,
+                new OnCurrentBuildingChangedEventsArgs {
+                    CurrentBuilding = currentBuilding
+                }
+            ); ;
+        }
+    }
 
     private BuildingFactorySO buildingFactory;
 
-    public BuildingSO CurrentBuilding { get; set; }
-
     void Awake() {
         Instance = this;
-        mainCamera = Camera.main;
 
         buildingFactory = Resources.Load<BuildingFactorySO>("building_factory_lvl_0");
         CurrentBuilding = buildingFactory.GetByIndex(0);
@@ -26,7 +41,7 @@ public class BuildingManager : MonoBehaviour {
             if(CurrentBuilding != null
                 && !EventSystem.current.IsPointerOverGameObject()) {
 
-                Instantiate(CurrentBuilding.Prefab, GetWorldPosition(), Quaternion.identity);
+                Instantiate(CurrentBuilding.Prefab, MouseUtils.GetWorldPosition(), Quaternion.identity);
             }
         }
 
@@ -45,9 +60,4 @@ public class BuildingManager : MonoBehaviour {
         }
     }
 
-    private Vector3 GetWorldPosition() {
-        var worldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        worldPosition.z = 0f;
-        return worldPosition;
-    }
 }
