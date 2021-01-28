@@ -28,3 +28,12 @@
 - timer
 - timerMax
 
+# Resource Nodes
+
+- &check; Criar o WoodResourceNode utilizando o trunk com sprite
+- &check; Criar script para garantir o Sorting Order
+  - SortingOrder -(int) transform.position.y
+  - utilizar precissonMultiplier = 5f, seria no caso ter 5 SortingOrder para cada position no jogo
+- _ No ResourceGenerator implementar a lógica de buscar os resource nodes utilizando physics2d
+  - Adicionar um collider as árvores
+  - OverlapCircleAll retorna uma lista que deve ser percorrida para saber quais os resource nodes foram colididos.

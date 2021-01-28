@@ -25,3 +25,10 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 - Criação do fantasma das construções para dar um preview ao jogador de como a construção estará no mundo
 
 ![](Docs/building_ghost.PNG)
+
+# Dia 6
+
+- Criação do nodos de recursos
+- Implementação do sistema para buscar recursos próximos as construções
+
+![](Docs/resource_nodes.PNG)

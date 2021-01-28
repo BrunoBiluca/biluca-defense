@@ -9,11 +9,24 @@ public class ResourceGenerator : MonoBehaviour {
     private float timer;
     private float timerMaxInSeconds;
 
-    void Start() {
+    void Awake() {
         building = GetComponent<BuildingTypeHolder>().BuildingType;
 
         var oneSecond = 1f;
         timerMaxInSeconds = oneSecond / building.resourceGeneratorConfig.ResourcesPerSecond;
+    }
+
+    private void Start() {
+        var colliders = Physics2D.OverlapCircleAll(transform.position, 5f);
+
+        var resourceNodeCount = 0;
+        foreach(var collider in colliders) {
+            var resourceNode = collider.GetComponent<ResourceNode>();
+            if(resourceNode != null) {
+                resourceNodeCount++;
+            }
+        }
+        Debug.Log($"Número de recursos próximos: {resourceNodeCount}");
     }
 
     void Update() {

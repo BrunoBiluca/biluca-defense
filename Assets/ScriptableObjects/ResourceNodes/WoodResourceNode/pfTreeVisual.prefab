@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2137381427654621959}
   - component: {fileID: 8007674068501373137}
+  - component: {fileID: 4021024708303506280}
   m_Layer: 0
   m_Name: TreeBushes_1
   m_TagString: Untagged
@@ -46,6 +47,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +83,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4021024708303506280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471790222991265846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6ccecb44fa1be4687979419b434808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnce: 0
+  positionOffsetY: 3.1
 --- !u!1 &766746179961913856
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +106,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5877761172366299447}
+  - component: {fileID: 5873912674595921913}
+  - component: {fileID: 2958845913464734542}
   m_Layer: 0
   m_Name: pfTreeVisual
   m_TagString: Untagged
@@ -116,6 +134,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5873912674595921913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766746179961913856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3958fb8f31e1924f8c233d150dd1e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &2958845913464734542
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766746179961913856}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.43
 --- !u!1 &4724870052136919265
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,6 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9064450812318702635}
   - component: {fileID: 5899865323519720757}
+  - component: {fileID: 6402083287308480662}
   m_Layer: 0
   m_Name: TreeBushes_2
   m_TagString: Untagged
@@ -162,6 +209,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -197,6 +245,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6402083287308480662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4724870052136919265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6ccecb44fa1be4687979419b434808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnce: 0
+  positionOffsetY: 2.1
 --- !u!1 &6935567414290222296
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,6 +269,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7883123605705503146}
   - component: {fileID: 9123379376543891443}
+  - component: {fileID: 3737205140237241170}
   m_Layer: 0
   m_Name: TreeBushes_4
   m_TagString: Untagged
@@ -243,6 +306,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -278,6 +342,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3737205140237241170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6935567414290222296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6ccecb44fa1be4687979419b434808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnce: 0
+  positionOffsetY: 3.1
 --- !u!1 &7260127690804197385
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +366,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7107669108911837442}
   - component: {fileID: 7828525954310415181}
+  - component: {fileID: 3273625979440340742}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -324,6 +403,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -359,6 +439,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3273625979440340742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7260127690804197385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6ccecb44fa1be4687979419b434808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnce: 0
+  positionOffsetY: 0
 --- !u!1 &8976734756563553963
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,6 +463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5145177241056235975}
   - component: {fileID: 6719419960567876367}
+  - component: {fileID: 2486293961064264051}
   m_Layer: 0
   m_Name: TreeBushes_3
   m_TagString: Untagged
@@ -405,6 +500,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -440,3 +536,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2486293961064264051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8976734756563553963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6ccecb44fa1be4687979419b434808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runOnce: 0
+  positionOffsetY: 2
