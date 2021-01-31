@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
-public class ResourceNode : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class ResourceNode : MonoBehaviour{
+    // TODO: utilizar maxResource para determinar quando 
+    // o ResourceNode deve será destruído
+
+    [SerializeField]
+    private int maxResource;
+
+    public int MaxResource {
+        get { return maxResource; }
+        set { maxResource = value; }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public ResourceTypeSO resourceType;
+
 }

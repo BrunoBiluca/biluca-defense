@@ -18,4 +18,6 @@ MonoBehaviour:
   shortcut: G
   resourceGeneratorConfig:
     resourcesPerSecond: 1
+    maxResourceNodes: 1
+    detectionRadius: 8
     resourceType: {fileID: 11400000, guid: 6d3c434f1bd36d949ab9036f374a3ca8, type: 2}

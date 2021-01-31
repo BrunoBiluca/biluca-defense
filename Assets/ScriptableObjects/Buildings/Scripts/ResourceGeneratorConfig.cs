@@ -13,6 +13,12 @@ public class ResourceGeneratorConfig {
     }
 
     [SerializeField]
+    public int maxResourceNodes;
+
+    [SerializeField]
+    public float detectionRadius;
+
+    [SerializeField]
     private ResourceTypeSO resourceType;
     public ResourceTypeSO ResourceType {
         get { return resourceType; }

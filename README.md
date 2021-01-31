@@ -32,3 +32,8 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 - Implementação do sistema para buscar recursos próximos as construções
 
 ![](Docs/resource_nodes.PNG)
+
+# Dia 7
+
+- Criação dos outros nodos de recursos
+- Configuração de geração de recursos para todos os nodos
