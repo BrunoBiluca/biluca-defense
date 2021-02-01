@@ -9,4 +9,11 @@ public class BuildingTypeHolder : MonoBehaviour {
         get { return buildingType; }
         set { buildingType = value; }
     }
+
+    private void Update() {
+        var buildingCollider = buildingType.Prefab.GetComponent<BoxCollider2D>();
+        var buildingPoint = transform.position + (Vector3)buildingCollider.offset;
+
+        DebugDraw.DrawRectangle(buildingPoint, buildingCollider.size, Color.red);
+    }
 }

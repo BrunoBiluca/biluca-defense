@@ -38,9 +38,7 @@ public class BuildingManager : MonoBehaviour {
 
     void Update() {
         if(Input.GetMouseButtonDown(0)) {
-            if(CurrentBuilding != null
-                && !EventSystem.current.IsPointerOverGameObject()) {
-
+            if(CanBuild()) {
                 Instantiate(CurrentBuilding.Prefab, MouseUtils.GetWorldPosition(), Quaternion.identity);
             }
         }
@@ -60,4 +58,17 @@ public class BuildingManager : MonoBehaviour {
         }
     }
 
+    private bool CanBuild() {
+        if(CurrentBuilding == null) return false;
+
+        var currentBuildingCollider = CurrentBuilding.Prefab.GetComponent<BoxCollider2D>();
+        var buildingPoint = transform.position + (Vector3)currentBuildingCollider.offset;
+        var collidersBeneathBuilding = Physics2D.OverlapBoxAll(
+            buildingPoint,
+            currentBuildingCollider.size,
+            0f
+        );
+
+        return true;
+    }
 }

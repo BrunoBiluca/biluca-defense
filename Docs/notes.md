@@ -37,10 +37,22 @@
 - &check; No ResourceGenerator implementar a lógica de buscar os resource nodes utilizando physics2d
   - Adicionar um collider as árvores
   - OverlapCircleAll retorna uma lista que deve ser percorrida para saber quais os resource nodes foram colididos.
-- _ Configurar a criação de recursos
+- &check; Configurar a criação de recursos
   - Max Radius (detection radius)
   - Máximo número de recursos
-- _ Criar lógica para calcular o número de recursos gerados baseados no número de nós de recursos no alcance da construção
+- &check; Criar lógica para calcular o número de recursos gerados baseados no número de nós de recursos no alcance da construção
   - O número de recursos por segundo é por cada recurso no alcance, assim se a quantidade de nós de recurso é 5 e a construção gera 2 recursos por segundo, então serão 10 de recursos por segundo
-- _ Configurar os outros recursos para serem coletados
+- &check; Configurar os outros recursos para serem coletados
 
+# Building placement rules
+
+- &check; Adicionar box collider em cada harvester
+- _ Building Manager implementará a lógica para garantir a construção
+  - OverlapBoxAll
+  - Não construir embaixo de cada construção
+  - Não construir próximo a construções iguais
+  - Apenas construir se existir alguma construção próxima
+- _ Adicionar Debug circle para a regra de construções iguais próximas
+- _ Adicionar regra para construir coletadores próximos de outras construções
+- _ Criar o building HQ
+  - Será a construção inicial, sem ela não será possível construir nenhuma outra

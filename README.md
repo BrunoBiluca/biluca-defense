@@ -37,3 +37,5 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 
 - Criação dos outros nodos de recursos
 - Configuração de geração de recursos para todos os nodos
+
+![](Docs/all_resource_nodes.PNG)
