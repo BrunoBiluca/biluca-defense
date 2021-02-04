@@ -60,6 +60,7 @@ public class BuildingManager : MonoBehaviour {
 
     private bool CanBuild() {
         if(CurrentBuilding == null) return false;
+        if(EventSystem.current.IsPointerOverGameObject()) return false;
 
         var currentBuildingCollider = CurrentBuilding.Prefab.GetComponent<BoxCollider2D>();
         var buildingPoint = transform.position + (Vector3)currentBuildingCollider.offset;

@@ -11,9 +11,18 @@ public class BuildingTypeHolder : MonoBehaviour {
     }
 
     private void Update() {
-        var buildingCollider = buildingType.Prefab.GetComponent<BoxCollider2D>();
-        var buildingPoint = transform.position + (Vector3)buildingCollider.offset;
-
-        DebugDraw.DrawRectangle(buildingPoint, buildingCollider.size, Color.red);
+        if(GameManager.Instance.DebugMode) {
+            var buildingCollider = buildingType.Prefab.GetComponent<BoxCollider2D>();
+            DebugDraw.DrawRectangle(
+                transform.position + (Vector3)buildingCollider.offset, 
+                buildingCollider.size, 
+                Color.red
+            );
+            DebugDraw.DrawCircle(
+                transform.position, 
+                buildingType.resourceGeneratorConfig.detectionRadius, 
+                Color.blue
+            );
+        }
     }
 }

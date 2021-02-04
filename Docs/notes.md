@@ -47,12 +47,12 @@
 # Building placement rules
 
 - &check; Adicionar box collider em cada harvester
-- _ Building Manager implementará a lógica para garantir a construção
+- &check; Building Manager implementará a lógica para garantir a construção
   - OverlapBoxAll
   - Não construir embaixo de cada construção
   - Não construir próximo a construções iguais
   - Apenas construir se existir alguma construção próxima
-- _ Adicionar Debug circle para a regra de construções iguais próximas
+- &check; Adicionar Debug circle para a regra de construções iguais próximas
 - _ Adicionar regra para construir coletadores próximos de outras construções
 - _ Criar o building HQ
   - Será a construção inicial, sem ela não será possível construir nenhuma outra
