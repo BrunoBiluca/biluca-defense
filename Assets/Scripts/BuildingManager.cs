@@ -13,6 +13,7 @@ public class BuildingManager : MonoBehaviour {
         public BuildingSO CurrentBuilding { get; set; }
     }
 
+    private const float constructionRadius = 12f;
     private BuildingSO currentBuilding;
     public BuildingSO CurrentBuilding {
         get { return currentBuilding; }
@@ -38,8 +39,9 @@ public class BuildingManager : MonoBehaviour {
 
     void Update() {
         if(Input.GetMouseButtonDown(0)) {
-            if(CanBuild()) {
-                Instantiate(CurrentBuilding.Prefab, MouseUtils.GetWorldPosition(), Quaternion.identity);
+            var buildingPosition = MouseUtils.GetWorldPosition();
+            if(CanBuild(buildingPosition)) {
+                Instantiate(CurrentBuilding.Prefab, buildingPosition, Quaternion.identity);                
             }
         }
 
@@ -58,18 +60,61 @@ public class BuildingManager : MonoBehaviour {
         }
     }
 
-    private bool CanBuild() {
+    private bool CanBuild(Vector3 position) {
         if(CurrentBuilding == null) return false;
         if(EventSystem.current.IsPointerOverGameObject()) return false;
-
-        var currentBuildingCollider = CurrentBuilding.Prefab.GetComponent<BoxCollider2D>();
-        var buildingPoint = transform.position + (Vector3)currentBuildingCollider.offset;
-        var collidersBeneathBuilding = Physics2D.OverlapBoxAll(
-            buildingPoint,
-            currentBuildingCollider.size,
-            0f
-        );
+        if(HasBuildingBeneth(position)) return false;
+        if(HasSameBuildingTypeClose(position)) return false;
+        if(!HasBuildingOnRangeForConstruction(position)) return false;
 
         return true;
     }
+
+    private bool HasBuildingBeneth(Vector3 position) {
+        var currentBuildingCollider = CurrentBuilding.Prefab.GetComponent<BoxCollider2D>();
+        var collidersBeneathBuilding = Physics2D.OverlapBoxAll(
+            position + (Vector3)currentBuildingCollider.offset,
+            currentBuildingCollider.size,
+            0f
+        );
+        foreach(var building in collidersBeneathBuilding) {
+            var buildingTypeHolder = building.GetComponent<BuildingTypeHolder>();
+            if(buildingTypeHolder != null) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool HasSameBuildingTypeClose(Vector3 position) {
+        var collidersSameBuilding = Physics2D.OverlapCircleAll(
+            position,
+            currentBuilding.resourceGeneratorConfig.detectionRadius
+        );
+        foreach(var building in collidersSameBuilding) {
+            var buildingTypeHolder = building.GetComponent<BuildingTypeHolder>();
+            if(buildingTypeHolder == null) continue;
+
+            if(buildingTypeHolder.BuildingType == currentBuilding) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool HasBuildingOnRangeForConstruction(Vector3 position) {
+        var collidersSameBuilding = Physics2D.OverlapCircleAll(
+            position,
+            constructionRadius
+        );
+        foreach(var building in collidersSameBuilding) {
+            var buildingTypeHolder = building.GetComponent<BuildingTypeHolder>();
+            if(buildingTypeHolder != null) return true;
+        }
+
+        return false;        
+    }
+
 }

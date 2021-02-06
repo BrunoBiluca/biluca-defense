@@ -47,6 +47,8 @@ public class BuildingTypeSelectUI : MonoBehaviour {
         });
 
         foreach(var building in buildingList.possibleBuildings) {
+            if(!building.isAvailableToBuild) continue;
+
             var buildingOption = Instantiate(buildingOptionTemplate, transform);
             buildingOption.gameObject.SetActive(true);
 

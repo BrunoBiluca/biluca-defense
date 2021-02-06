@@ -2,18 +2,15 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Building")]
 public class BuildingSO : ScriptableObject {
+
+    [SerializeField]
+    public bool isAvailableToBuild;
+
     [SerializeField]
     private string buildingName;
     public string BuildingName {
         get { return buildingName; }
         set { buildingName = value; }
-    }
-
-    [SerializeField]
-    private Sprite sprite;
-    public Sprite Sprite {
-        get { return sprite; }
-        set { sprite = value; }
     }
 
     [SerializeField]
@@ -28,6 +25,14 @@ public class BuildingSO : ScriptableObject {
     public string Shortcut {
         get { return shortcut; }
         set { shortcut = value; }
+    }
+
+
+    [SerializeField]
+    private Sprite sprite;
+    public Sprite Sprite {
+        get { return sprite; }
+        set { sprite = value; }
     }
 
     public ResourceGeneratorConfig resourceGeneratorConfig;

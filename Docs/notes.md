@@ -53,6 +53,6 @@
   - Não construir próximo a construções iguais
   - Apenas construir se existir alguma construção próxima
 - &check; Adicionar Debug circle para a regra de construções iguais próximas
-- _ Adicionar regra para construir coletadores próximos de outras construções
-- _ Criar o building HQ
+- &check; Adicionar regra para construir coletadores próximos de outras construções
+- &check; Criar o building HQ
   - Será a construção inicial, sem ela não será possível construir nenhuma outra

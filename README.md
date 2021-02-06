@@ -39,3 +39,10 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 - Configuração de geração de recursos para todos os nodos
 
 ![](Docs/all_resource_nodes.PNG)
+
+# Dia 8
+
+- Criação da edificação de HQ, principal estrutura do jogo
+- Criação das regras de construção das edificações
+
+![](Docs/hq.PNG)
