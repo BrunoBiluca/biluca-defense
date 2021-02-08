@@ -56,3 +56,25 @@
 - &check; Adicionar regra para construir coletadores próximos de outras construções
 - &check; Criar o building HQ
   - Será a construção inicial, sem ela não será possível construir nenhuma outra
+
+# Building animations
+
+- &check; Criar animações para o wood harvester
+
+# Resource Generator Overlay
+
+- &check; Criar o objeto
+  - Esse objeto está no Top Sorting Layer
+  - backgroundOutline
+  - bar -> bar
+    - essa barra será redimensionada, o pivot da barra deve ser colocado na esquerda
+  - Text
+  - ícone do recurso
+- &check; Criar Script para definir o comportamento
+  - _ Adicionar o sprite de cada building
+  - _ Adicionar o tamanho da barra para diminutir 
+  - _ fazer a barra aumentar
+- &check; O Resource generador overlay será adicionado nos prefabs de cada harvester e HQ
+- _ Criar o Resource generator overlay para o ghost exibir as informações de eficiencia da construção
+
+

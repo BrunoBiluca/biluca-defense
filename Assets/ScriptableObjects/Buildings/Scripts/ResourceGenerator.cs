@@ -1,16 +1,29 @@
+using System;
 using UnityEngine;
 
 public class ResourceGenerator : MonoBehaviour {
 
-    private BuildingSO building;
+    public BuildingSO Building { get; private set; }
     private ResourceGeneratorConfig resourceGeneratorConfig;
 
-    private float timer;
-    private float timerMaxInSeconds;
+    public float timer;
+    public float timerMaxInSeconds;
+
+    public EventHandler OnResourcesPerSecondChange;
+    private float resourcesPerSecond;
+    public float ResourcesPerSecond { 
+        get {
+            return resourcesPerSecond;
+        } 
+        private set {
+            resourcesPerSecond = value;
+            OnResourcesPerSecondChange?.Invoke(this, EventArgs.Empty);
+        } 
+    }
 
     void Awake() {
-        building = GetComponent<BuildingTypeHolder>().BuildingType;
-        resourceGeneratorConfig = building.resourceGeneratorConfig;
+        Building = GetComponent<BuildingTypeHolder>().BuildingType;
+        resourceGeneratorConfig = Building.resourceGeneratorConfig;
     }
 
     private void Start() {
@@ -33,23 +46,18 @@ public class ResourceGenerator : MonoBehaviour {
 
     private void CalculateResourceTimer(int resourceNodeCount) {
         var oneSecond = 1f;
-        timerMaxInSeconds = oneSecond
-            / (building.resourceGeneratorConfig.ResourcesPerSecond * resourceNodeCount);
-
-        Debug.Log(
-            $"Número de recursos próximos: {resourceNodeCount}"
-            + $" Timer: {timerMaxInSeconds}"
-        );
+        ResourcesPerSecond = Building.resourceGeneratorConfig.ResourcesPerSecond * resourceNodeCount;
+        timerMaxInSeconds = oneSecond / ResourcesPerSecond;
     }
 
     void Update() {
         timer += Time.deltaTime;
 
-        if (timer > timerMaxInSeconds) {
+        if(timer > timerMaxInSeconds) {
             timer = 0f;
             ResourceManager
                 .Instance
-                .AddResource(building.resourceGeneratorConfig.ResourceType);
+                .AddResource(Building.resourceGeneratorConfig.ResourceType);
         }
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAvailableToBuild: 1
   buildingName: Wood Harvester
-  prefab: {fileID: 4938616004972476361, guid: 31ab2480ac5b1b2449955a0e4ea416d5, type: 3}
+  prefab: {fileID: 3565715747615973155, guid: a8ddac80caf74a6428bf2b24a8e001e0, type: 3}
   shortcut: W
   sprite: {fileID: 21300000, guid: 793ca27a5a3378149aaa12abe85933f4, type: 3}
   resourceGeneratorConfig:

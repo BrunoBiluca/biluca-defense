@@ -13,7 +13,7 @@ public class BuildingManager : MonoBehaviour {
         public BuildingSO CurrentBuilding { get; set; }
     }
 
-    private const float constructionRadius = 12f;
+    private const float constructionRadius = 18f;
     private BuildingSO currentBuilding;
     public BuildingSO CurrentBuilding {
         get { return currentBuilding; }

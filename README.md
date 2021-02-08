@@ -46,3 +46,9 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 - Criação das regras de construção das edificações
 
 ![](Docs/hq.PNG)
+
+# Dia 9
+
+- Criação do overaly para exibir a quantidade de recursos coletados, melhorando assim a visualização para o usuário
+
+![](Docs/resource_overlay.PNG)
