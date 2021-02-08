@@ -27,20 +27,7 @@ public class ResourceGenerator : MonoBehaviour {
     }
 
     private void Start() {
-        var colliders = Physics2D.OverlapCircleAll(
-            transform.position, resourceGeneratorConfig.detectionRadius);
-
-        var resourceNodeCount = 0;
-        foreach(var collider in colliders) {
-            var resourceNode = collider.GetComponent<ResourceNode>();
-            if(resourceNode == null) continue;
-
-            if(resourceNode.resourceType == resourceGeneratorConfig.ResourceType
-                && resourceNodeCount < resourceGeneratorConfig.maxResourceNodes) {
-                resourceNodeCount++;
-            }
-        }
-
+        int resourceNodeCount = ResourceNodesSearch.NearbyNodes(transform.position, resourceGeneratorConfig);
         CalculateResourceTimer(resourceNodeCount);
     }
 

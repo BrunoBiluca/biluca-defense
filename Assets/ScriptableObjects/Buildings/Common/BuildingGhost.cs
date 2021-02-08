@@ -6,6 +6,8 @@ public class BuildingGhost : MonoBehaviour {
 
     public GameObject GhostSprite { get; set; }
 
+    public BuildingTypeHolder holder;
+
     void Awake() {
         GhostSprite = transform.Find("sprite").gameObject;
     }
@@ -22,6 +24,7 @@ public class BuildingGhost : MonoBehaviour {
     }
 
     private void Toggle(BuildingSO currentBuilding) {
+        holder.BuildingType = currentBuilding;
         if(currentBuilding == null) {
             Hide();
         }
@@ -31,11 +34,15 @@ public class BuildingGhost : MonoBehaviour {
     }
 
     private void Hide() {
-        GhostSprite.SetActive(false);
+        foreach(Transform child in transform) {
+            child.gameObject.SetActive(false);
+        }        
     }
 
     private void Show(Sprite sprite) {
-        GhostSprite.SetActive(true);
+        foreach(Transform child in transform) {
+            child.gameObject.SetActive(true);
+        } 
         GhostSprite.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 

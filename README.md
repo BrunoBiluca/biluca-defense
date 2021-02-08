@@ -49,6 +49,7 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 
 # Dia 9
 
-- Criação do overaly para exibir a quantidade de recursos coletados, melhorando assim a visualização para o usuário
+- Criação do overlay para exibir a quantidade de recursos coletados, melhorando assim a visualização para o usuário
+- Criação do overlay para exibir a eficiência de uma edificação ser construída naquele lugar
 
 ![](Docs/resource_overlay.PNG)

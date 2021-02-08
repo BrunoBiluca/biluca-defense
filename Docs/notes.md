@@ -75,6 +75,6 @@
   - _ Adicionar o tamanho da barra para diminutir 
   - _ fazer a barra aumentar
 - &check; O Resource generador overlay será adicionado nos prefabs de cada harvester e HQ
-- _ Criar o Resource generator overlay para o ghost exibir as informações de eficiencia da construção
+- &check; Criar o Resource generator overlay para o ghost exibir as informações de eficiencia da construção
 
 
