@@ -78,3 +78,12 @@
 - &check; Criar o Resource generator overlay para o ghost exibir as informações de eficiencia da construção
 
 
+# Criar o curso de criação das edificações
+
+- &check; Criar uma classe de ResourceAmount e uma lista no BuildingSO para cada recurso necessário
+
+# Tooltip para informação do jogador
+
+- _ TooltipUI
+  - preto com texto
+- _ TooltipUI Script

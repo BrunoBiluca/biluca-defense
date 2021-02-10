@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObjects/Building")]
@@ -36,4 +37,6 @@ public class BuildingSO : ScriptableObject {
     }
 
     public ResourceGeneratorConfig resourceGeneratorConfig;
+
+    public List<ResourceAmount> resourceCost;
 }

@@ -41,6 +41,7 @@ public class BuildingManager : MonoBehaviour {
         if(Input.GetMouseButtonDown(0)) {
             var buildingPosition = MouseUtils.GetWorldPosition();
             if(CanBuild(buildingPosition)) {
+                ResourceManager.Instance.SpendResources(CurrentBuilding.resourceCost);
                 Instantiate(CurrentBuilding.Prefab, buildingPosition, Quaternion.identity);                
             }
         }
@@ -66,6 +67,7 @@ public class BuildingManager : MonoBehaviour {
         if(HasBuildingBeneth(position)) return false;
         if(HasSameBuildingTypeClose(position)) return false;
         if(!HasBuildingOnRangeForConstruction(position)) return false;
+        if(!CanAfford()) return false;
 
         return true;
     }
@@ -90,13 +92,13 @@ public class BuildingManager : MonoBehaviour {
     private bool HasSameBuildingTypeClose(Vector3 position) {
         var collidersSameBuilding = Physics2D.OverlapCircleAll(
             position,
-            currentBuilding.resourceGeneratorConfig.detectionRadius
+            CurrentBuilding.resourceGeneratorConfig.detectionRadius
         );
         foreach(var building in collidersSameBuilding) {
             var buildingTypeHolder = building.GetComponent<BuildingTypeHolder>();
             if(buildingTypeHolder == null) continue;
 
-            if(buildingTypeHolder.BuildingType == currentBuilding) {
+            if(buildingTypeHolder.BuildingType == CurrentBuilding) {
                 return true;
             }
         }
@@ -116,5 +118,17 @@ public class BuildingManager : MonoBehaviour {
 
         return false;        
     }
+
+    private bool CanAfford() {
+        foreach(var resourceAmount in CurrentBuilding.resourceCost){
+            var currentAmount = ResourceManager.Instance.GetResourceAmount(resourceAmount.resource);
+            if(resourceAmount.amount > currentAmount) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
 }

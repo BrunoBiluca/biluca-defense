@@ -22,3 +22,6 @@ MonoBehaviour:
     maxResourceNodes: 6
     detectionRadius: 8
     resourceType: {fileID: 11400000, guid: 8377ef6a579da6644b89f5c197cee4bc, type: 2}
+  resourceCost:
+  - resource: {fileID: 11400000, guid: 8377ef6a579da6644b89f5c197cee4bc, type: 2}
+    amount: 10
