@@ -15,3 +15,5 @@ MonoBehaviour:
   resourceName: Wood
   amount: 1
   sprite: {fileID: 21300000, guid: 0b991b4895d956f4ea5f954ab13b7529, type: 3}
+  shortName: W
+  color: {r: 0.509434, g: 0.28756937, b: 0.11294055, a: 0}

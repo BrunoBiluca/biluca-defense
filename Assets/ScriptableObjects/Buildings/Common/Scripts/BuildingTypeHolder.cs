@@ -24,6 +24,8 @@ public class BuildingTypeHolder : MonoBehaviour {
     }
 
     private void DebugBuildingType() {
+        if(buildingType == null) return;
+
         var buildingCollider = buildingType.Prefab.GetComponent<BoxCollider2D>();
         DebugDraw.DrawRectangle(
             transform.position + (Vector3)buildingCollider.offset,

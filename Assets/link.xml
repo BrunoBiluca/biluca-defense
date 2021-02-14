@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<linker>
+  <assembly fullname="FSharp.Core">
+    <type fullname="FSharp.Core" preserve="all"></type>
+  </assembly>
+  <assembly fullname="LanguageExt.Core">
+    <type fullname="LanguageExt.Core" preserve="all"></type>
+  </assembly>
+  <assembly fullname="LanguageExt.FSharp">
+    <type fullname="LanguageExt.FSharp" preserve="all"></type>
+  </assembly>
+</linker>

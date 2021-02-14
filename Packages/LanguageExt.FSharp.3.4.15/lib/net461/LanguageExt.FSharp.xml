@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LanguageExt.FSharp</name>
+    </assembly>
+    <members>
+        <member name="M:LanguageExt.FSharp.fs``1(Microsoft.FSharp.Core.FSharpOption{``0})">
+            <summary>
+            Convert a F# Option into a LanguageExt Option 
+            </summary>
+        </member>
+        <member name="M:LanguageExt.FSharp.fs``1(LanguageExt.Option{``0})">
+            <summary>
+            Convert a LanguageExt Option into an F# Option 
+            </summary>
+        </member>
+        <member name="M:LanguageExt.FSharp.fs``1(LanguageExt.OptionUnsafe{``0})">
+            <summary>
+            Convert a LanguageExt OptionUnsafe into an F# Option 
+            </summary>
+        </member>
+        <member name="M:LanguageExt.FSharp.fs``1(Microsoft.FSharp.Collections.FSharpList{``0})">
+            <summary>
+            Convert an F# List into an IEnumerable T
+            </summary>
+        </member>
+        <member name="M:LanguageExt.FSharp.fs``1(LanguageExt.Lst{``0})">
+            <summary>
+            Convert an LanguageExt List (Lst T) into an F# List
+            </summary>
+        </member>
+        <member name="M:LanguageExt.FSharp.fs``2(Microsoft.FSharp.Collections.FSharpMap{``0,``1})">
+            <summary>
+            Convert an F# Map into a LanguageExt Map (Map K V)
+            </summary>
+        </member>
+        <member name="M:LanguageExt.FSharp.fs``2(LanguageExt.Map{``0,``1})">
+            <summary>
+            Convert a LanguageExt Map (Map K V) into an F# Map
+            </summary>
+        </member>
+        <member name="M:LanguageExt.FSharp.fs(LanguageExt.Unit)">
+            <summary>
+            Convert LanguageExt Unit to F# unit
+            </summary>
+            <param name="unit">()</param>
+        </member>
+        <member name="M:LanguageExt.FSharp.ToFSharp``1(LanguageExt.Option{``0})">
+            <summary>
+            Convert a LanguageExt Option into an F# Option 
+            </summary>
+        </member>
+        <member name="M:LanguageExt.FSharp.ToFSharp``1(LanguageExt.OptionUnsafe{``0})">
+            <summary>
+            Convert a LanguageExt OptionUnsafe into an F# Option 
+            </summary>
+        </member>
+        <member name="M:LanguageExt.FSharp.ToFSharp``2(LanguageExt.Map{``0,``1})">
+            <summary>
+            Convert a LanguageExt Map (Map K V) into an F# Map
+            </summary>
+        </member>
+        <member name="M:LanguageExt.FSharp.ToFSharp``1(LanguageExt.Lst{``0})">
+            <summary>
+            Convert an LanguageExt List (Lst A) into an F# List
+            </summary>
+        </member>
+    </members>
+</doc>

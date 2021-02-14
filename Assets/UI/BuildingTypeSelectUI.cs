@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +13,17 @@ public class BuildingTypeSelectUI : MonoBehaviour {
 
     private Dictionary<BuildingSO, Transform> buttonOptions;
 
+    private BuildingFactorySO buildingList;
+    private Transform buildingOptionTemplate;
+
     void Awake() {
         buttonOptions = new Dictionary<BuildingSO, Transform>();
+
+        buildingList = Resources.Load<BuildingFactorySO>("building_factory_lvl_0");
+
+        buildingOptionTemplate = transform.Find("buildingOptionTemplate");
+        buildingOptionTemplate.gameObject.SetActive(false);
+
         CreateBuildingSelectUI();
     }
 
@@ -27,15 +38,15 @@ public class BuildingTypeSelectUI : MonoBehaviour {
     }
 
     private void CreateBuildingSelectUI() {
-        var buildingList = Resources.Load<BuildingFactorySO>("building_factory_lvl_0");
-
-        var buildingOptionTemplate = transform.Find("buildingOptionTemplate");
-        buildingOptionTemplate.gameObject.SetActive(false);
-
         var buttonOffset = 100f;
-
         var index = 0;
 
+        index = CreateSelectorButton(buttonOffset, index);
+
+        CreateBuildingSelectorButtons(buttonOffset, index);
+    }
+
+    private int CreateSelectorButton(float buttonOffset, int index) {
         arrowButton = Instantiate(buildingOptionTemplate, transform);
         arrowButton.gameObject.SetActive(true);
         arrowButton.GetComponent<RectTransform>()
@@ -45,7 +56,19 @@ public class BuildingTypeSelectUI : MonoBehaviour {
         arrowButton.GetComponent<Button>().onClick.AddListener(() => {
             BuildingManager.Instance.CurrentBuilding = null;
         });
+        arrowButton.GetComponent<MouseEnterExitComponent>().OnMouseEnter += (object sender, EventArgs e) => {
+            TooltipUI.Instance.Show("Selector");
+        };
+        arrowButton.GetComponent<MouseEnterExitComponent>().OnMouseExit += (object sender, EventArgs e) => {
+            TooltipUI.Instance.Hide();
+        };
+        return index;
+    }
 
+    private int CreateBuildingSelectorButtons(
+        float buttonOffset,
+        int index
+    ) {
         foreach(var building in buildingList.possibleBuildings) {
             if(!building.isAvailableToBuild) continue;
 
@@ -62,9 +85,26 @@ public class BuildingTypeSelectUI : MonoBehaviour {
             buildingOption.GetComponent<Button>().onClick.AddListener(() => {
                 BuildingManager.Instance.CurrentBuilding = building;
             });
+            buildingOption.GetComponent<MouseEnterExitComponent>().OnMouseEnter += (object sender, EventArgs e) => {
+                var costs = string.Join(
+                    " ",
+                    building.resourceCost.Select(
+                        rc =>
+                            $"<color=#{ColorUtility.ToHtmlStringRGB(rc.resource.color)}>" +
+                            $"{rc.resource.shortName} {rc.amount}" +
+                            $"</color>"
+                    )
+                );
+                TooltipUI.Instance.Show($"{building.BuildingName}\n{costs}");
+            };
+            buildingOption.GetComponent<MouseEnterExitComponent>().OnMouseExit += (object sender, EventArgs e) => {
+                TooltipUI.Instance.Hide();
+            };
 
             buttonOptions.Add(building, buildingOption);
         }
+
+        return index;
     }
 
     private void UpdateBuildingSelectUI() {

@@ -78,12 +78,23 @@
 - &check; Criar o Resource generator overlay para o ghost exibir as informações de eficiencia da construção
 
 
-# Criar o curso de criação das edificações
+# Criar o custo de criação das edificações
 
 - &check; Criar uma classe de ResourceAmount e uma lista no BuildingSO para cada recurso necessário
 
 # Tooltip para informação do jogador
 
-- _ TooltipUI
+- &check; TooltipUI
   - preto com texto
-- _ TooltipUI Script
+- &check; TooltipUI Script
+- TExtMeshPro.setText
+- ForceMeshUpdate
+- &check; Alterar o tamanho do background utilizando GetRenderedValues e atualizando o transform do background.sizeDelta
+- &check; Adiciar um padding para o background
+- &check; O tooltip deve ser renderizado no mousePosition
+  - utilizar o Canvas Scale para corrigir a posição do tooltip (11 minutos)
+- &check; Garantir que o tooltip não ultrapasse a tela
+- &check; Mostrar o tooltip por eventos
+  - Implementar OnMouseEnterExit para garantir eventos quando o mouse está sobre o objeto ou não
+- &check; Desabilitar Raycast Target
+- &check; Adicionar um cor no textos

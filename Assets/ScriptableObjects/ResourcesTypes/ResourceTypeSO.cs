@@ -7,7 +7,6 @@ public class ResourceTypeSO : ScriptableObject {
 
     [SerializeField]
     private string resourceName;
-
     public string ResourceName {
         get { return resourceName; }
         set { resourceName = value; }
@@ -26,4 +25,8 @@ public class ResourceTypeSO : ScriptableObject {
         get { return sprite; }
         set { sprite = value; }
     }
+
+    public string shortName;
+
+    public Color color;
 }

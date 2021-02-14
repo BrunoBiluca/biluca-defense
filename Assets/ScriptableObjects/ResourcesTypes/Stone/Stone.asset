@@ -15,3 +15,5 @@ MonoBehaviour:
   resourceName: Stone
   amount: 1
   sprite: {fileID: 21300000, guid: 7a449ef4abe418a4f900fb0178223ea6, type: 3}
+  shortName: S
+  color: {r: 0.41509432, g: 0.41509432, b: 0.41509432, a: 0}

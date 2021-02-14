@@ -15,3 +15,5 @@ MonoBehaviour:
   resourceName: Gold
   amount: 1
   sprite: {fileID: 21300000, guid: 8b744c47cb320b84889a7b8439a78bc2, type: 3}
+  shortName: G
+  color: {r: 0.754717, g: 0.5365459, b: 0.12459949, a: 0}

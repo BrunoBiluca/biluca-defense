@@ -1,5 +1,5 @@
+using LanguageExt;
 using System;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -40,9 +40,15 @@ public class BuildingManager : MonoBehaviour {
     void Update() {
         if(Input.GetMouseButtonDown(0)) {
             var buildingPosition = MouseUtils.GetWorldPosition();
-            if(CanBuild(buildingPosition)) {
+            var canBuildResponse = CanBuild(buildingPosition);
+            if(canBuildResponse.Result) {
                 ResourceManager.Instance.SpendResources(CurrentBuilding.resourceCost);
                 Instantiate(CurrentBuilding.Prefab, buildingPosition, Quaternion.identity);                
+            }
+            else {
+                canBuildResponse.Reason.IfSome(
+                    (reason) => TooltipUI.Instance.Show(reason, new TooltipUI.TooltipTimer() { Timer = 2f })
+                );
             }
         }
 
@@ -61,15 +67,17 @@ public class BuildingManager : MonoBehaviour {
         }
     }
 
-    private bool CanBuild(Vector3 position) {
-        if(CurrentBuilding == null) return false;
-        if(EventSystem.current.IsPointerOverGameObject()) return false;
-        if(HasBuildingBeneth(position)) return false;
-        if(HasSameBuildingTypeClose(position)) return false;
-        if(!HasBuildingOnRangeForConstruction(position)) return false;
-        if(!CanAfford()) return false;
+    private CanBuildResponse CanBuild(Vector3 position) {
+        if(CurrentBuilding == null) return CanBuildResponse.New(false);
+        if(EventSystem.current.IsPointerOverGameObject()) return CanBuildResponse.New(false);
+        if(HasBuildingBeneth(position)) return CanBuildResponse.New(false, "Area is not clear");
+        if(HasSameBuildingTypeClose(position)) 
+            return CanBuildResponse.New(false, "Too close to another building from same type");
+        if(!HasBuildingOnRangeForConstruction(position)) 
+            return CanBuildResponse.New(false, "Too long from another building");;
+        if(!CanAfford()) return CanBuildResponse.New(false, "Not enougth resources, stranger");
 
-        return true;
+        return CanBuildResponse.Ok();
     }
 
     private bool HasBuildingBeneth(Vector3 position) {
@@ -130,5 +138,22 @@ public class BuildingManager : MonoBehaviour {
         return true;
     }
 
+    public class CanBuildResponse {
 
+        public static CanBuildResponse New(bool result, string reason = null) {
+            return new CanBuildResponse() { 
+                Result = result, 
+                Reason = reason != null ? Option<string>.Some(reason) : Option<string>.None
+            };
+        }
+
+        internal static CanBuildResponse Ok() {
+            return new CanBuildResponse() { Result = true };
+        }
+
+        public bool Result { get; set; }
+
+        public Option<string> Reason { get; set; }
+
+    }
 }
