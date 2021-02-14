@@ -25,3 +25,4 @@ MonoBehaviour:
   resourceCost:
   - resource: {fileID: 11400000, guid: 8377ef6a579da6644b89f5c197cee4bc, type: 2}
     amount: 20
+  baseHealth: 100

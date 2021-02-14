@@ -1,9 +1,7 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMoviment : MonoBehaviour {
+public class CameraMovimentFollowingMouse : MonoBehaviour {
 
     [SerializeField]
     private CinemachineVirtualCamera virtualCamera;

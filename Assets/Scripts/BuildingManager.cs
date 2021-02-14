@@ -8,7 +8,6 @@ public class BuildingManager : MonoBehaviour {
     public static BuildingManager Instance { get; private set; }
 
     public event EventHandler<OnCurrentBuildingChangedEventsArgs> OnCurrentBuildingChanged;
-
     public class OnCurrentBuildingChangedEventsArgs : EventArgs {
         public BuildingSO CurrentBuilding { get; set; }
     }
@@ -43,11 +42,13 @@ public class BuildingManager : MonoBehaviour {
             var canBuildResponse = CanBuild(buildingPosition);
             if(canBuildResponse.Result) {
                 ResourceManager.Instance.SpendResources(CurrentBuilding.resourceCost);
-                Instantiate(CurrentBuilding.Prefab, buildingPosition, Quaternion.identity);                
+                Instantiate(CurrentBuilding.Prefab, buildingPosition, Quaternion.identity);         
             }
             else {
                 canBuildResponse.Reason.IfSome(
-                    (reason) => TooltipUI.Instance.Show(reason, new TooltipUI.TooltipTimer() { Timer = 2f })
+                    (reason) => TooltipUI.Instance.Show(
+                        reason, new TooltipUI.TooltipTimer() { Timer = 2f }
+                    )
                 );
             }
         }

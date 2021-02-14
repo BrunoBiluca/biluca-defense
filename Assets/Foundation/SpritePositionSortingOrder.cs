@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpritePositionSortingOrder : MonoBehaviour {
 
     [SerializeField]
     private bool runOnce;
+
     [SerializeField]
     private float positionOffsetY;
 
@@ -17,7 +16,9 @@ public class SpritePositionSortingOrder : MonoBehaviour {
 
     private void LateUpdate() {
         var precision = 5f;
-        spriteRenderer.sortingOrder = -(int)((transform.position.y - positionOffsetY) * precision);
+        spriteRenderer.sortingOrder = -(int)(
+            (transform.position.y - positionOffsetY) * precision
+        );
 
         if(runOnce) {
             Destroy(this);

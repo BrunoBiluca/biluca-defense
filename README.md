@@ -53,3 +53,10 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 - Criação do overlay para exibir a eficiência de uma edificação ser construída naquele lugar
 
 ![](Docs/resource_overlay.PNG)
+
+# Dia 10-11
+
+- Criação de sistema de tooltip para exibir mensagens para o usuário
+- Criação de sistema de vida para as edificações
+
+![](Docs/health_system.PNG)

@@ -98,3 +98,7 @@
   - Implementar OnMouseEnterExit para garantir eventos quando o mouse está sobre o objeto ou não
 - &check; Desabilitar Raycast Target
 - &check; Adicionar um cor no textos
+
+# Health system
+
+
