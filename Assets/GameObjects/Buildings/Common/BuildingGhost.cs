@@ -48,6 +48,6 @@ public class BuildingGhost : MonoBehaviour {
 
 
     void Update() {
-        transform.position = MouseUtils.GetWorldPosition();
+        transform.position = WorldPositionUtils.GetMousePosition();
     }
 }

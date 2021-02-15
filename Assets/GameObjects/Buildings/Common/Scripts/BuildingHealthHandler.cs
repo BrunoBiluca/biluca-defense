@@ -15,11 +15,10 @@ public class BuildingHealthHandler : MonoBehaviour {
         currentHealth = baseHealth;
     }
 
-    void Update() {
-        if(Input.GetKeyDown(KeyCode.T)) {
-            currentHealth -= 10f;
-            healthBar.SetSize(currentHealth);
-        }
+    public void Damage(float amount) {
+        currentHealth -= amount;
+        healthBar.SetSize(currentHealth);
+
         if(currentHealth <= 0) Destroy(gameObject);
     }
 }

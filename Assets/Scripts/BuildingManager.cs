@@ -13,6 +13,7 @@ public class BuildingManager : MonoBehaviour {
     }
 
     private const float constructionRadius = 18f;
+
     private BuildingSO currentBuilding;
     public BuildingSO CurrentBuilding {
         get { return currentBuilding; }
@@ -27,6 +28,20 @@ public class BuildingManager : MonoBehaviour {
         }
     }
 
+    private Transform hqReference;
+    public Transform HQReference {
+        get {
+            if(hqReference == null) {
+                var hqs = GameObject.FindGameObjectsWithTag(GameObjectsTags.HQ);
+                if(hqs.Length == 0) return null;
+
+                hqReference = GameObject.FindGameObjectsWithTag(GameObjectsTags.HQ)[0].transform;
+            }
+                
+            return hqReference;
+        }
+    }
+
     private BuildingFactorySO buildingFactory;
 
     void Awake() {
@@ -38,7 +53,7 @@ public class BuildingManager : MonoBehaviour {
 
     void Update() {
         if(Input.GetMouseButtonDown(0)) {
-            var buildingPosition = MouseUtils.GetWorldPosition();
+            var buildingPosition = WorldPositionUtils.GetMousePosition();
             var canBuildResponse = CanBuild(buildingPosition);
             if(canBuildResponse.Result) {
                 ResourceManager.Instance.SpendResources(CurrentBuilding.resourceCost);

@@ -99,6 +99,17 @@
 - &check; Desabilitar Raycast Target
 - &check; Adicionar um cor no textos
 
-# Health system
+# Enemies
+
+- &check; Exibir a barra de vida apenas quando esta for menor que 1
+- &check; Criar o prefab do enemy, um círculo
+- &check; Adicionar script para movimento do inimigo, linha reta em direção a construção
+- &check; Colisão do enemy
+- &check; Criação do enemy
+- _ Implementar a procura por construções
+- _ Implementar um timer para a procura por construções
+  - Adicionar um timer random no início assim cada um dos inimigos vão buscar em frames diferentes
+- _ Adicionar os resources nodes como Trigger
+- _ Adicionar a animação do enemy
 
 

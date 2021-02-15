@@ -10,6 +10,9 @@ public class HealthBar : MonoBehaviour {
     private float NormalizedBarSize { get { return barSize / maxBarValue; } }
 
     [SerializeField]
+    private bool notShowWhenFull;
+
+    [SerializeField]
     private bool useMultipleColors;
 
     [SerializeField]
@@ -25,8 +28,7 @@ public class HealthBar : MonoBehaviour {
         bar = transform.Find("bar");
         barSprite = bar.Find("barSprite").GetComponent<SpriteRenderer>();
         barSprite.color = fullBarColor;
-
-        maxBarValue = 1;
+        Setup(1);
     }
 
     public void Setup(float maxValue) {
@@ -49,7 +51,7 @@ public class HealthBar : MonoBehaviour {
         else if(barSize > maxBarValue) barSize = maxBarValue;
 
         if(immediately) {
-            BarPosition(NormalizedBarSize);
+            BarDimension(NormalizedBarSize);
         }
         else {
             InvokeRepeating(nameof(SlowBarReduction), 0f, 0.05f);
@@ -60,20 +62,29 @@ public class HealthBar : MonoBehaviour {
         var newBarSize = bar.localScale.x - 0.01f;
 
         if(newBarSize <= NormalizedBarSize) {
-            BarPosition(NormalizedBarSize);
+            BarDimension(NormalizedBarSize);
 
             if(useMultipleColors) ChangeColor();
             CancelInvoke();
             return;
         }
 
-        BarPosition(newBarSize);
+        BarDimension(newBarSize);
     }
 
-    private void BarPosition(float size) {
+    private void BarDimension(float size) {
         var normalizedPosition = -(1 - size) / 2f;
         bar.localPosition = new Vector3(normalizedPosition, bar.localPosition.y);
         bar.localScale = new Vector3(size, bar.localScale.y);
+
+        BarVisibility();
+    }
+
+    private void BarVisibility() {
+        if(!notShowWhenFull) return;
+
+        if(NormalizedBarSize == 1f) gameObject.SetActive(false);
+        else gameObject.SetActive(true);
     }
 
     private void ChangeColor() {
