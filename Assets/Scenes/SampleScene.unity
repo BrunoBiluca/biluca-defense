@@ -5012,6 +5012,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1a725c2a5387ca48804c5b396e3c123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startResources:
+  - resource: {fileID: 11400000, guid: 8377ef6a579da6644b89f5c197cee4bc, type: 2}
+    amount: 100
+  - resource: {fileID: 11400000, guid: 23a8edfb90b0e7a48bd0208ea4736dfa, type: 2}
+    amount: 70
+  - resource: {fileID: 11400000, guid: 6d3c434f1bd36d949ab9036f374a3ca8, type: 2}
+    amount: 10
 --- !u!4 &1305419005
 Transform:
   m_ObjectHideFlags: 0
@@ -8523,6 +8530,10 @@ PrefabInstance:
     - target: {fileID: 3540918297150922262, guid: 8181debd97d103642a7b82423f054b6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6127118878228256267, guid: 8181debd97d103642a7b82423f054b6f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8181debd97d103642a7b82423f054b6f, type: 3}

@@ -213,6 +213,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourceGeneratorOverlayPercentage
       objectReference: {fileID: 0}
+    - target: {fileID: 8562108002021780001, guid: 6f9615a39df9dbe4cb2bc890471e00b8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8562108002235506935, guid: 6f9615a39df9dbe4cb2bc890471e00b8, type: 3}
       propertyPath: m_Color.a
       value: 0.47058824

@@ -4,8 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "ScriptableObjects/Building")]
 public class BuildingSO : ScriptableObject {
 
-    [SerializeField]
-    public bool isAvailableToBuild;
+    public float baseHealth;
 
     [SerializeField]
     private string buildingName;
@@ -13,6 +12,10 @@ public class BuildingSO : ScriptableObject {
         get { return buildingName; }
         set { buildingName = value; }
     }
+
+    public bool isAvailableToBuild;
+
+    public bool itGenerateResources;
 
     [SerializeField]
     private Transform prefab;
@@ -39,6 +42,4 @@ public class BuildingSO : ScriptableObject {
     public ResourceGeneratorConfig resourceGeneratorConfig;
 
     public List<ResourceAmount> resourceCost;
-
-    public float baseHealth;
 }

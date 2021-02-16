@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +6,9 @@ public class ResourceManager : MonoBehaviour {
     public static ResourceManager Instance { get; set; }
 
     private Dictionary<ResourceTypeSO, int> resources;
+
+    [SerializeField]
+    private List<ResourceAmount> startResources;
 
     public event EventHandler OnResourceAmountChanged;
 
@@ -17,7 +19,11 @@ public class ResourceManager : MonoBehaviour {
         resources = new Dictionary<ResourceTypeSO, int>();
         resourcesList.Resources.ForEach((r) => {
             resources.Add(r, 0);
-        });        
+        });
+
+        startResources.ForEach(amount => {
+            resources[amount.resource] = amount.amount;
+        });
     }
 
     public int GetResourceAmount(ResourceTypeSO resource) {

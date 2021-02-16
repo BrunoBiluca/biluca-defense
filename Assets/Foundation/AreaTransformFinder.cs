@@ -3,18 +3,22 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class AreaTargetFinder : MonoBehaviour {
-
+public class AreaTransformFinder: MonoBehaviour {
     [SerializeField]
     private float lookForTargetsTimerMax = .2f;
 
     [SerializeField]
     private Transform defaultTarget;
 
-    [SerializeField]
     private Type lookingForType;
+    private float lookRangeRadius;
 
-    public Option<Transform> Target { get; private set; }
+    private Transform target;
+    public Option<Transform> Target { 
+        get {
+            return target != null ? Option<Transform>.Some(target) : Option<Transform>.None;
+        } 
+    }
 
     private float lookForTargetsTimer;
 
@@ -22,9 +26,10 @@ public class AreaTargetFinder : MonoBehaviour {
         lookForTargetsTimer = Random.Range(0f, lookForTargetsTimerMax);
     }
 
-    public void Setup(Transform defaultTarget, Type lookingForType) {
+    public void Setup(Transform defaultTarget, Type lookingForType, float lookRangeRadius = 6f) {
         this.defaultTarget = defaultTarget;
         this.lookingForType = lookingForType;
+        this.lookRangeRadius = lookRangeRadius;
     }
 
     void Update() {
@@ -36,20 +41,16 @@ public class AreaTargetFinder : MonoBehaviour {
     }
 
     private void Find() {
-        var nearObjects = Physics2D.OverlapCircleAll(transform.position, 6f);
+        var nearObjects = Physics2D.OverlapCircleAll(transform.position, lookRangeRadius);
 
         foreach(var obj in nearObjects) {
-            if(obj.gameObject.GetComponent(lookingForType) != null) {
-                Target = obj.transform;
+            var searchedComponent = obj.gameObject.GetComponent(lookingForType);
+            if(searchedComponent != null) {
+                target = obj.transform;
                 return;
             }
         }
 
-        if(defaultTarget == null) {
-            Target = Option<Transform>.None;
-        }
-        else {
-            Target = defaultTarget;
-        }
+        target = defaultTarget;
     }
 }

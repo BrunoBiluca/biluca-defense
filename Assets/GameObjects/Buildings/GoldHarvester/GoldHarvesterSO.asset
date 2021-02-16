@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2d45822e89a5a41bfb663dca84c424, type: 3}
   m_Name: GoldHarvesterSO
   m_EditorClassIdentifier: 
-  isAvailableToBuild: 1
+  baseHealth: 100
   buildingName: Gold Harvester
+  isAvailableToBuild: 1
+  itGenerateResources: 1
   prefab: {fileID: 7218373282491998563, guid: 8f92ec00070feb94a9a55961b24a9c0e, type: 3}
   shortcut: G
   sprite: {fileID: 21300000, guid: 8ead931dd91bff8489e75de9c414f17f, type: 3}
@@ -27,4 +29,3 @@ MonoBehaviour:
     amount: 50
   - resource: {fileID: 11400000, guid: 8377ef6a579da6644b89f5c197cee4bc, type: 2}
     amount: 50
-  baseHealth: 100

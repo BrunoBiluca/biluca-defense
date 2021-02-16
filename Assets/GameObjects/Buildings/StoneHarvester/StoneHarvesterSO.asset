@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a2d45822e89a5a41bfb663dca84c424, type: 3}
   m_Name: StoneHarvesterSO
   m_EditorClassIdentifier: 
-  isAvailableToBuild: 1
+  baseHealth: 100
   buildingName: Stone Harvester
+  isAvailableToBuild: 1
+  itGenerateResources: 1
   prefab: {fileID: 4958350316356194778, guid: b20ce3f941f3ab04283221d0315672d2, type: 3}
   shortcut: S
   sprite: {fileID: 21300000, guid: 2263e91ebcd2a254dab5f4caccb4a7af, type: 3}
@@ -25,4 +27,3 @@ MonoBehaviour:
   resourceCost:
   - resource: {fileID: 11400000, guid: 8377ef6a579da6644b89f5c197cee4bc, type: 2}
     amount: 20
-  baseHealth: 100

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildingGhost : MonoBehaviour {
@@ -34,15 +32,11 @@ public class BuildingGhost : MonoBehaviour {
     }
 
     private void Hide() {
-        foreach(Transform child in transform) {
-            child.gameObject.SetActive(false);
-        }        
+        gameObject.SetActive(false);
     }
 
     private void Show(Sprite sprite) {
-        foreach(Transform child in transform) {
-            child.gameObject.SetActive(true);
-        } 
+        gameObject.SetActive(true);
         GhostSprite.GetComponent<SpriteRenderer>().sprite = sprite;
     }
 

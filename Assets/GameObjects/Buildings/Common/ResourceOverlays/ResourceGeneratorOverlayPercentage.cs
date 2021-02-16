@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -11,28 +9,36 @@ public class ResourceGeneratorOverlayPercentage : MonoBehaviour {
     SpriteRenderer icon;
     TextMeshPro text;
 
-    private void Start() {
+    private void Awake() {
         icon = transform.Find("icon").GetComponent<SpriteRenderer>();
-        UpdateSprite();
         text = transform.Find("text").GetComponent<TextMeshPro>();
+    }
 
+    private void Start() {
         buildingTypeHolder = transform.parent.GetComponent<BuildingTypeHolder>();
         buildingTypeHolder.OnBuildingTypeChanged += OnBuildingTypeChanged;
     }
 
     private void OnBuildingTypeChanged(object sender, System.EventArgs e) {
         buildingType = buildingTypeHolder.BuildingType;
-        UpdateSprite();
-    }
 
-    private void UpdateSprite() {
-        if(buildingType != null) {
-            icon.sprite = buildingType.resourceGeneratorConfig.ResourceType.Sprite;
+        if(buildingType == null) return;
+
+        if(buildingType.itGenerateResources) {
+            gameObject.SetActive(true);
+            UpdateSprite();
+        }
+        else {
+            gameObject.SetActive(false);
         }
     }
 
+    private void UpdateSprite() {
+        icon.sprite = buildingType.resourceGeneratorConfig.ResourceType.Sprite;
+    }
+
     private void Update() {
-        if (buildingType != null) {
+        if (buildingType != null && buildingType.itGenerateResources) {
             var resourceNodeCount = ResourceNodesSearch.NearbyNodes(
                 transform.parent.position, buildingType.resourceGeneratorConfig
             );

@@ -114,8 +114,24 @@
 
 # Tower
 
-- _ Criar prefab da Torre
+- &check; Adicionar um valor inicial de recursos
+- &check; Criar prefab da Torre
   - Basear no prefab do HQ
-- _ Adicionar um valor inicial de recursos
-- _ Look for targets pode ser transormado em um script de foundation
-- _ Adicionar look for targets na Torre
+  - Colocar um ponto para o spawn dos projéteis
+- &check; Look for targets pode ser transormado em um script de foundation
+- &check; Adicionar look for targets na Torre
+- &check; Criar o Arrow
+  - Rigidbody
+  - Box collider trigger
+- &check; Criar script para o Arrow
+  - Deve chegar ao inimigo
+- &check; Adicionar um timer para os tiros (ShootPerSecond)
+- _ Resolver problema com Arrow que não está andando no mapa
+- _ Converter o moveDir para EulerAngles
+  - Mathf.Atan2(y, x) * Rad2Deg
+- _ Adicionar o continuamento dos arrows 
+- _ Adicionar arrows para o HQ também
+- _ Corrigir bug quando para de coletar recursos a UI para de atualizar
+- _ Adicionar tempo de vida para o Arrow
+
+
