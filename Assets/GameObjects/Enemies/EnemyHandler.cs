@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,15 +6,12 @@ using UnityEngine;
 public class EnemyHandler : MonoBehaviour {
 
     private Rigidbody2D body;
-
-    private Transform targetTransform;
-
-
+    private AreaTargetFinder targetFinder;
 
     void Start() {
         body = GetComponent<Rigidbody2D>();
-
-        targetTransform = BuildingManager.Instance.HQReference;
+        targetFinder = GetComponent<AreaTargetFinder>();
+        targetFinder.Setup(BuildingManager.Instance.HQReference, typeof(BuildingTypeHolder));
     }
 
     void Update() {
@@ -21,15 +19,16 @@ public class EnemyHandler : MonoBehaviour {
     }
 
     private void MovimentHandler() {
-        if(targetTransform != null) {
-            var movDirection = (targetTransform.position - transform.position).normalized;
+        targetFinder.Target
+            .Some(target => {
+                if(target == null) return;
 
-            const float speed = 6f;
-            body.velocity = movDirection * speed;
-        }
-        else {
-            body.velocity = Vector2.zero;
-        }
+                var movDirection = (target.position - transform.position).normalized;
+
+                const float speed = 6f;
+                body.velocity = movDirection * speed;
+            })
+            .None(() => body.velocity = Vector2.zero);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
