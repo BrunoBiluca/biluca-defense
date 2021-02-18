@@ -34,19 +34,12 @@ public class ResourceManager : MonoBehaviour {
         resources[resource] += resource.Amount;
 
         OnResourceAmountChanged(this, EventArgs.Empty);
-
-        //DebugResources();
-    }
-
-    private void DebugResources() {
-        foreach(var r in resources) {
-            Debug.Log($"{r.Key}: {r.Value}");
-        }
     }
 
     internal void SpendResources(List<ResourceAmount> resourceCost) {
         foreach(var resourceAmount in resourceCost) {
             resources[resourceAmount.resource] -= resourceAmount.amount;
         }
+        OnResourceAmountChanged(this, EventArgs.Empty);
     }
 }

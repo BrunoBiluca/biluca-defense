@@ -38,6 +38,10 @@ public class AreaTransformFinder: MonoBehaviour {
             lookForTargetsTimer = 0f;
             Find();
         }
+
+        if(GameManager.Instance.DebugMode) {
+            DebugDraw.DrawCircle(transform.position, lookRangeRadius, Color.green);
+        }
     }
 
     private void Find() {

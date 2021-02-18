@@ -126,12 +126,12 @@
 - &check; Criar script para o Arrow
   - Deve chegar ao inimigo
 - &check; Adicionar um timer para os tiros (ShootPerSecond)
-- _ Resolver problema com Arrow que não está andando no mapa
-- _ Converter o moveDir para EulerAngles
+- &check; Resolver problema com Arrow que não está andando no mapa
+- &check; Converter o moveDir para EulerAngles
   - Mathf.Atan2(y, x) * Rad2Deg
-- _ Adicionar o continuamento dos arrows 
-- _ Adicionar arrows para o HQ também
-- _ Corrigir bug quando para de coletar recursos a UI para de atualizar
-- _ Adicionar tempo de vida para o Arrow
+- &check; Adicionar o continuamento dos arrows 
+- &check; Adicionar arrows para o HQ também
+- &check; Corrigir bug quando para de coletar recursos a UI para de atualizar
+- &check; Adicionar tempo de vida para o Arrow
 
 

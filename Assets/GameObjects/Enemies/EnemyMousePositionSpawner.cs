@@ -3,19 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRandomSpawner : MonoBehaviour {
+public class EnemyMousePositionSpawner : MonoBehaviour {
 
     [SerializeField]
     private GameObject enemyPrefab;
 
-    private readonly float timerMax = .5f;
-    private float timer;
+    void Start() {
+
+    }
 
     void Update() {
-        timer += Time.deltaTime;
-
-        if(timer > timerMax) {
-            timer = 0;
+        if(Input.GetMouseButtonDown(0)) {
             SpawEnemy();
         }
     }
@@ -23,7 +21,7 @@ public class EnemyRandomSpawner : MonoBehaviour {
     private void SpawEnemy() {
         Instantiate(
             enemyPrefab,
-            WorldPositionUtils.GetRandomPosition(20f),
+            WorldPositionUtils.GetMousePosition(),
             Quaternion.identity
         );
     }

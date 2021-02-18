@@ -7602,6 +7602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1962737032}
   - component: {fileID: 1962737033}
+  - component: {fileID: 1962737034}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -7630,9 +7631,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962737031}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b727a61497e735b4da27d5cec6073ad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 7697003166934687478, guid: 5198b3f3b62df0145a23e3c374d95c15, type: 3}
+--- !u!114 &1962737034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962737031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40004f94c916eb4f86d9865512907c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 7697003166934687478, guid: 5198b3f3b62df0145a23e3c374d95c15, type: 3}
