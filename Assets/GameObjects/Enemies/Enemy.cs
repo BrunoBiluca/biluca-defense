@@ -1,39 +1,44 @@
+using Assets.Foundation.HealthSystem;
+using Assets.Foundation.TransformUtils;
+using Assets.Foundation.UI.Indicators;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
-    public HealthSystem HealthSystem { get; private set; }
+namespace Assets.GameObjects.Enemies {
+    public class Enemy : MonoBehaviour, IIndicable {
+        public HealthSystem HealthSystem { get; private set; }
 
-    private Rigidbody2D body;
-    private AreaTransformFinder targetFinder;
+        private Rigidbody2D body;
+        private TransformCircleFinder targetFinder;
 
-    void Start() {
-        body = GetComponent<Rigidbody2D>();
-        targetFinder = GetComponent<AreaTransformFinder>();
-        targetFinder.Setup(BuildingManager.Instance.HQReference, typeof(BuildingTypeHolder));
+        void Start() {
+            body = GetComponent<Rigidbody2D>();
+            targetFinder = GetComponent<TransformCircleFinder>();
+            targetFinder.Setup(typeof(BuildingTypeHolder), defaultTarget: BuildingManager.Instance.HQReference);
 
-        var baseHealth = GetComponent<EnemyTypeHolder>().Enemy.baseHealth;
-        HealthSystem = GetComponent<HealthSystem>();
-        HealthSystem.Setup(baseHealth);
-    }
+            var baseHealth = GetComponent<EnemyTypeHolder>().Enemy.baseHealth;
+            HealthSystem = GetComponent<HealthSystem>();
+            HealthSystem.Setup(baseHealth);
+        }
 
-    void Update() {
-        MovimentHandler();
-    }
+        void Update() {
+            MovimentHandler();
+        }
 
-    private void MovimentHandler() {
-        var movDirection = targetFinder.Target
-            .Some(target => (target.position - transform.position).normalized)
-            .None(Vector2.zero);
+        private void MovimentHandler() {
+            var movDirection = targetFinder.Target
+                .Some(target => (target.position - transform.position).normalized)
+                .None(Vector2.zero);
 
-        const float speed = 6f;
-        body.velocity = movDirection * speed;
-    }
+            const float speed = 6f;
+            body.velocity = movDirection * speed;
+        }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        var building = collision.gameObject.GetComponent<Building>();
-        if(building == null) return;
+        private void OnCollisionEnter2D(Collision2D collision) {
+            var building = collision.gameObject.GetComponent<Building>();
+            if(building == null) return;
 
-        building.HealthSystem.Damage(10f);
-        Destroy(gameObject);
+            building.HealthSystem.Damage(10f);
+            Destroy(gameObject);
+        }
     }
 }

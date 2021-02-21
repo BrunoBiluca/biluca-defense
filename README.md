@@ -60,3 +60,17 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 - Criação de sistema de vida para as edificações
 
 ![](Docs/health_system.PNG)
+
+# Dia 12
+
+- Criação dos inimigo
+- Criação de invocação do inimigo
+
+![](Docs/enemy_spawner.PNG)
+
+# Dia 13-16
+
+- Criação do sistema de ondas dos inimigos
+- Várias refatorações no código para desacoplar várias mecânicas que podem ser utilizadas em outros projeto
+
+![](Docs/enemy_wave_system.PNG)

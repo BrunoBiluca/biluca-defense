@@ -1,3 +1,4 @@
+using Assets.Foundation.HealthSystem;
 using UnityEngine;
 
 public class Building : MonoBehaviour {

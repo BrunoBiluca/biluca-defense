@@ -134,4 +134,25 @@
 - &check; Corrigir bug quando para de coletar recursos a UI para de atualizar
 - &check; Adicionar tempo de vida para o Arrow
 
+## Wave Manager
+
+- &check; Criar um gerenciador de spawn dos inimigos
+- &check; Instanciar vários inimigos por vez
+- &check; Instanciar inimigos um após o outro
+- &check; Implementar o sistema de ondas utilizando StatePattern
+- &check; Aumentar o número de inimigos a cada onda
+- &check; Mudar o lugar que os inimigos são invocados por um raio do HQ
+- &check; Criar um indicador para mostrar a posição que os inimigos foram invocados
+  - Um círculo vermelho mostrando a próxima onda
+- &check; Adicionar um texto para mostrar o número da onda
+- &check; Adicionar um texto para mostrar o tempo até a próxima onda
+  - &check; Criar um script para renderizar essa UI
+- &check; Adicionar um arrow para mostrar o local que serão invocados os inimigos nas bordas da tela
+  - Remover o indicador quando o círculo da wave já está na tela
+  - Calcular a posição com a câmera principal tem que ser maior que o OrthographicSize * 1.5f
+- &check; Criar o indicador para o ínimigo mais próximo
+
+
+
+
 

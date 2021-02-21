@@ -1,5 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Foundation.TransformUtils;
+using Assets.GameObjects.Arrow;
+using Assets.GameObjects.Enemies;
 using UnityEngine;
 
 public class Tower : MonoBehaviour {
@@ -10,7 +11,7 @@ public class Tower : MonoBehaviour {
     [SerializeField]
     private GameObject arrowPrefab;
 
-    private AreaTransformFinder targetFinder;
+    private TransformCircleFinder targetFinder;
 
     private float arrowSpawTimerMax;
     private float arrowSpawTimer;
@@ -21,8 +22,8 @@ public class Tower : MonoBehaviour {
 
         arrowSpawTimerMax = 1f / arrowsPerSecond;
 
-        targetFinder = GetComponent<AreaTransformFinder>();
-        targetFinder.Setup(null, typeof(Enemy), 20f);
+        targetFinder = GetComponent<TransformCircleFinder>();
+        targetFinder.Setup(typeof(Enemy), lookRangeRadius: 20f);
     }
 
     void Update() {

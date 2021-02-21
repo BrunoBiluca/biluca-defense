@@ -1,3 +1,6 @@
+using Assets.Foundation;
+using Assets.Foundation.CameraUtils;
+using Assets.Foundation.TransformUtils;
 using System;
 using UnityEngine;
 
@@ -48,7 +51,7 @@ public class BuildingManager : MonoBehaviour {
 
     void Update() {
         if(Input.GetMouseButtonDown(0)) {
-            var buildingPosition = WorldPositionUtils.GetMousePosition();
+            var buildingPosition = CameraUtils.GetMousePosition();
             var canBuildResponse = new CanBuildRules(CurrentBuilding).CanBuild(buildingPosition);
             if(canBuildResponse.Result) {
                 ResourceManager.Instance.SpendResources(CurrentBuilding.resourceCost);

@@ -1,30 +1,30 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Foundation.TransformUtils;
 using UnityEngine;
 
-public class EnemyRandomSpawner : MonoBehaviour {
+namespace Assets.GameObjects.Enemies {
+    public class EnemyRandomSpawner : MonoBehaviour {
 
-    [SerializeField]
-    private GameObject enemyPrefab;
+        [SerializeField]
+        private GameObject enemyPrefab;
 
-    private readonly float timerMax = .5f;
-    private float timer;
+        private readonly float timerMax = .5f;
+        private float timer;
 
-    void Update() {
-        timer += Time.deltaTime;
+        void Update() {
+            timer += Time.deltaTime;
 
-        if(timer > timerMax) {
-            timer = 0;
-            SpawEnemy();
+            if(timer > timerMax) {
+                timer = 0;
+                SpawEnemy();
+            }
         }
-    }
 
-    private void SpawEnemy() {
-        Instantiate(
-            enemyPrefab,
-            WorldPositionUtils.GetRandomPosition(20f),
-            Quaternion.identity
-        );
+        private void SpawEnemy() {
+            Instantiate(
+                enemyPrefab,
+                PositionUtils.GetRandomPosition(20f),
+                Quaternion.identity
+            );
+        }
     }
 }

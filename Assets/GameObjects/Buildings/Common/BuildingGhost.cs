@@ -1,3 +1,5 @@
+using Assets.Foundation;
+using Assets.Foundation.CameraUtils;
 using UnityEngine;
 
 public class BuildingGhost : MonoBehaviour {
@@ -42,6 +44,6 @@ public class BuildingGhost : MonoBehaviour {
 
 
     void Update() {
-        transform.position = WorldPositionUtils.GetMousePosition();
+        transform.position = CameraUtils.GetMousePosition();
     }
 }

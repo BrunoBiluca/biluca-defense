@@ -1,3 +1,5 @@
+using Assets.Foundation;
+using Assets.Foundation.CameraUtils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,7 +23,7 @@ public class EnemyMousePositionSpawner : MonoBehaviour {
     private void SpawEnemy() {
         Instantiate(
             enemyPrefab,
-            WorldPositionUtils.GetMousePosition(),
+            CameraUtils.GetMousePosition(),
             Quaternion.identity
         );
     }
