@@ -39,7 +39,7 @@ namespace Assets.GameObjects.Enemies {
         private void SpawnEnemies() {
             WaveCounter++;
 
-            var spawnPosition = PositionUtils.GetRandomSemiCirclePosition(HQPosition, 30f, 40f);
+            var spawnPosition = PositionUtils.GetRandomSemiCirclePosition(HQPosition, 30f, 60f);
 
             Destroy(SpawnIndicator);
             SpawnIndicator = Instantiate(

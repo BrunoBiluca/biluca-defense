@@ -152,7 +152,15 @@
   - Calcular a posição com a câmera principal tem que ser maior que o OrthographicSize * 1.5f
 - &check; Criar o indicador para o ínimigo mais próximo
 
+# Shaders
 
-
+- _ SpriteEmission
+  - Material
+  - Shader
+- _ Adicionar _MainTex
+- Adicionar _EmissionColor
+- Criar para ouro
+- Criar para inimigos
+- Criar para o arrow com a máscara
 
 

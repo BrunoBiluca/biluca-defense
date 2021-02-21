@@ -74,3 +74,7 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 - Várias refatorações no código para desacoplar várias mecânicas que podem ser utilizadas em outros projeto
 
 ![](Docs/enemy_wave_system.PNG)
+
+- Adição de Post Processing no jogo para ficar mais legal
+
+![](Docs/bloom.PNG)
