@@ -169,7 +169,7 @@
 - _ Adicionar o tempo de construção para cada construção
 - &check; Utilizar as informações do BuildingType para formar o placeholder
   - Collider
-- _ Adicionar uma barra para mostrar o processo
+- &check; Adicionar uma barra para mostrar o processo
   - Criar canvas image com uma máscara menor
   - Girar no sentido horário com a rotação começando de cima
 - _ Corrigir problema com instanciar várias construções enquanto estão sendo construidas

@@ -78,3 +78,9 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 - Adição de Post Processing no jogo para ficar mais legal
 
 ![](Docs/bloom.PNG)
+
+# Dia 17-19
+
+- Adição de efeito e tempo para a construção das edificações, utilizando shaders para criar um efeito legal
+
+![](Docs/building_constructor.PNG)

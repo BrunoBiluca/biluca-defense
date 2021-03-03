@@ -58,7 +58,6 @@ namespace Assets.GameManagers {
                 if(canBuildResponse.Result) {
                     ResourceManager.Instance.SpendResources(CurrentBuilding.resourceCost);
                     BuildingConstructor.Create(CurrentBuilding, buildingPosition);
-                    //Instantiate(CurrentBuilding.Prefab, buildingPosition, Quaternion.identity);
                 } else {
                     canBuildResponse.Reason.IfSome(
                         (reason) => TooltipUI.Instance.Show(
