@@ -1,6 +1,8 @@
-using Assets.Foundation.HealthSystem;
-using Assets.Foundation.TransformUtils;
-using Assets.Foundation.UI.Indicators;
+using Assets.GameManagers;
+using Assets.GameObjects.Buildings;
+using Assets.UnityFoundation.HealthSystem;
+using Assets.UnityFoundation.TransformUtils;
+using Assets.UnityFoundation.UI.Indicators;
 using UnityEngine;
 
 namespace Assets.GameObjects.Enemies {

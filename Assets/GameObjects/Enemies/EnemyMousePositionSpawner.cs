@@ -1,30 +1,28 @@
-using Assets.Foundation;
-using Assets.Foundation.CameraUtils;
+using Assets.UnityFoundation;
+using Assets.UnityFoundation.CameraUtils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMousePositionSpawner : MonoBehaviour {
+namespace Assets.GameObjects.Enemies {
+    public class EnemyMousePositionSpawner : MonoBehaviour {
 
-    [SerializeField]
-    private GameObject enemyPrefab;
+        [SerializeField]
+        private GameObject enemyPrefab;
 
-    void Start() {
-
-    }
-
-    void Update() {
-        if(Input.GetMouseButtonDown(0)) {
-            SpawEnemy();
+        void Update() {
+            if(Input.GetMouseButtonDown(0)) {
+                SpawEnemy();
+            }
         }
-    }
 
-    private void SpawEnemy() {
-        Instantiate(
-            enemyPrefab,
-            CameraUtils.GetMousePosition(),
-            Quaternion.identity
-        );
+        private void SpawEnemy() {
+            Instantiate(
+                enemyPrefab,
+                CameraUtils.GetMousePosition(),
+                Quaternion.identity
+            );
+        }
     }
 }

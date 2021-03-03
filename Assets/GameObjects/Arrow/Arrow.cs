@@ -1,5 +1,5 @@
-using Assets.Foundation.HealthSystem;
-using Assets.Foundation.TransformUtils;
+using Assets.UnityFoundation.HealthSystem;
+using Assets.UnityFoundation.TransformUtils;
 using Assets.GameObjects.Enemies;
 using System.Collections;
 using System.Collections.Generic;

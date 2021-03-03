@@ -1,83 +1,86 @@
-using Assets.Foundation;
-using Assets.Foundation.CameraUtils;
-using Assets.Foundation.TransformUtils;
+using Assets.GameObjects.Buildings;
+using Assets.UnityFoundation;
+using Assets.UnityFoundation.CameraUtils;
+using Assets.UnityFoundation.TransformUtils;
 using System;
 using UnityEngine;
 
-public class BuildingManager : MonoBehaviour {
+namespace Assets.GameManagers {
+    public class BuildingManager : MonoBehaviour {
 
-    public static BuildingManager Instance { get; private set; }
+        public static BuildingManager Instance { get; private set; }
 
-    public event EventHandler<OnCurrentBuildingChangedEventsArgs> OnCurrentBuildingChanged;
-    public class OnCurrentBuildingChangedEventsArgs : EventArgs {
-        public BuildingSO CurrentBuilding { get; set; }
-    }
+        public event EventHandler<OnCurrentBuildingChangedEventsArgs> OnCurrentBuildingChanged;
+        public class OnCurrentBuildingChangedEventsArgs : EventArgs {
+            public BuildingSO CurrentBuilding { get; set; }
+        }
 
-    private BuildingSO currentBuilding;
-    public BuildingSO CurrentBuilding {
-        get { return currentBuilding; }
-        set {
-            currentBuilding = value;
-            OnCurrentBuildingChanged?.Invoke(
-                this,
-                new OnCurrentBuildingChangedEventsArgs {
-                    CurrentBuilding = currentBuilding
+        private BuildingSO currentBuilding;
+        public BuildingSO CurrentBuilding {
+            get { return currentBuilding; }
+            set {
+                currentBuilding = value;
+                OnCurrentBuildingChanged?.Invoke(
+                    this,
+                    new OnCurrentBuildingChangedEventsArgs {
+                        CurrentBuilding = currentBuilding
+                    }
+                ); ;
+            }
+        }
+
+        private Transform hqReference;
+        public Transform HQReference {
+            get {
+                if(hqReference == null) {
+                    var hqs = GameObject.FindGameObjectsWithTag(GameObjectsTags.HQ);
+                    if(hqs.Length == 0) return null;
+
+                    hqReference = GameObject.FindGameObjectsWithTag(GameObjectsTags.HQ)[0].transform;
                 }
-            ); ;
-        }
-    }
 
-    private Transform hqReference;
-    public Transform HQReference {
-        get {
-            if(hqReference == null) {
-                var hqs = GameObject.FindGameObjectsWithTag(GameObjectsTags.HQ);
-                if(hqs.Length == 0) return null;
-
-                hqReference = GameObject.FindGameObjectsWithTag(GameObjectsTags.HQ)[0].transform;
-            }
-                
-            return hqReference;
-        }
-    }
-
-    private BuildingFactorySO buildingFactory;
-
-    void Awake() {
-        Instance = this;
-
-        buildingFactory = Resources.Load<BuildingFactorySO>("building_factory_lvl_0");
-    }
-
-    void Update() {
-        if(Input.GetMouseButtonDown(0)) {
-            var buildingPosition = CameraUtils.GetMousePosition();
-            var canBuildResponse = new CanBuildRules(CurrentBuilding).CanBuild(buildingPosition);
-            if(canBuildResponse.Result) {
-                ResourceManager.Instance.SpendResources(CurrentBuilding.resourceCost);
-                Instantiate(CurrentBuilding.Prefab, buildingPosition, Quaternion.identity);         
-            }
-            else {
-                canBuildResponse.Reason.IfSome(
-                    (reason) => TooltipUI.Instance.Show(
-                        reason, new TooltipUI.TooltipTimer() { Timer = 2f }
-                    )
-                );
+                return hqReference;
             }
         }
 
-        // TODO: esses ifs tem que virar uma classe de mapping de shortcuts, 
-        // bem no estilo de CommandPattern
-        if(Input.GetKeyDown(KeyCode.W)) {
-            CurrentBuilding = buildingFactory.GetByShortcut(KeyCode.W.ToString());
+        private BuildingFactorySO buildingFactory;
+
+        void Awake() {
+            Instance = this;
+
+            buildingFactory = Resources.Load<BuildingFactorySO>("building_factory_lvl_0");
         }
 
-        if(Input.GetKeyDown(KeyCode.G)) {
-            CurrentBuilding = buildingFactory.GetByShortcut(KeyCode.G.ToString());
-        }
+        void Update() {
+            if(Input.GetMouseButtonDown(0)) {
+                var buildingPosition = CameraUtils.GetMousePosition();
+                var canBuildResponse = new CanBuildRules(CurrentBuilding).CanBuild(buildingPosition);
+                if(canBuildResponse.Result) {
+                    ResourceManager.Instance.SpendResources(CurrentBuilding.resourceCost);
+                    BuildingConstructor.Create(CurrentBuilding, buildingPosition);
+                    //Instantiate(CurrentBuilding.Prefab, buildingPosition, Quaternion.identity);
+                } else {
+                    canBuildResponse.Reason.IfSome(
+                        (reason) => TooltipUI.Instance.Show(
+                            reason, new TooltipUI.TooltipTimer() { Timer = 2f }
+                        )
+                    );
+                }
+            }
 
-        if(Input.GetKeyDown(KeyCode.S)) {
-            CurrentBuilding = buildingFactory.GetByShortcut(KeyCode.S.ToString());
+            // TODO: esses ifs tem que virar uma classe de mapping de shortcuts, 
+            // bem no estilo de CommandPattern
+            if(Input.GetKeyDown(KeyCode.W)) {
+                CurrentBuilding = buildingFactory.GetByShortcut(KeyCode.W.ToString());
+            }
+
+            if(Input.GetKeyDown(KeyCode.G)) {
+                CurrentBuilding = buildingFactory.GetByShortcut(KeyCode.G.ToString());
+            }
+
+            if(Input.GetKeyDown(KeyCode.S)) {
+                CurrentBuilding = buildingFactory.GetByShortcut(KeyCode.S.ToString());
+            }
         }
     }
 }

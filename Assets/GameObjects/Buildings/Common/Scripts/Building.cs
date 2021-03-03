@@ -1,14 +1,16 @@
-using Assets.Foundation.HealthSystem;
+using Assets.UnityFoundation.HealthSystem;
 using UnityEngine;
 
-public class Building : MonoBehaviour {
+namespace Assets.GameObjects.Buildings {
+    public class Building : MonoBehaviour {
 
-    public HealthSystem HealthSystem { get; private set; }
+        public HealthSystem HealthSystem { get; private set; }
 
-    void Start() {
-        var baseHealth = GetComponent<BuildingTypeHolder>().BuildingType.baseHealth;
+        void Start() {
+            var baseHealth = GetComponent<BuildingTypeHolder>().BuildingType.baseHealth;
 
-        HealthSystem = GetComponent<HealthSystem>();
-        HealthSystem.Setup(baseHealth);
+            HealthSystem = GetComponent<HealthSystem>();
+            HealthSystem.Setup(baseHealth);
+        }
     }
 }

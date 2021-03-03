@@ -42,4 +42,5 @@ public class BuildingSO : ScriptableObject {
     public ResourceGeneratorConfig resourceGeneratorConfig;
 
     public List<ResourceAmount> resourceCost;
+    public float constructionTime;
 }

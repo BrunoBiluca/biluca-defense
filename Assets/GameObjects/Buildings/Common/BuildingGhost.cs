@@ -1,49 +1,50 @@
-using Assets.Foundation;
-using Assets.Foundation.CameraUtils;
+using Assets.GameManagers;
+using Assets.UnityFoundation.CameraUtils;
 using UnityEngine;
 
-public class BuildingGhost : MonoBehaviour {
+namespace Assets.GameObjects.Buildings {
+    public class BuildingGhost : MonoBehaviour {
 
-    public GameObject GhostSprite { get; set; }
+        public GameObject GhostSprite { get; set; }
 
-    public BuildingTypeHolder holder;
+        public BuildingTypeHolder holder;
 
-    void Awake() {
-        GhostSprite = transform.Find("sprite").gameObject;
-    }
-
-    void Start() {
-        BuildingManager.Instance.OnCurrentBuildingChanged += BuildingManager_OnCurrentBuildingChanged;
-        Toggle(BuildingManager.Instance.CurrentBuilding);
-    }
-
-    private void BuildingManager_OnCurrentBuildingChanged(
-        object sender, BuildingManager.OnCurrentBuildingChangedEventsArgs e
-    ) {
-        Toggle(e.CurrentBuilding);
-    }
-
-    private void Toggle(BuildingSO currentBuilding) {
-        holder.BuildingType = currentBuilding;
-        if(currentBuilding == null) {
-            Hide();
+        void Awake() {
+            GhostSprite = transform.Find("sprite").gameObject;
         }
-        else {
-            Show(currentBuilding.Sprite);
+
+        void Start() {
+            BuildingManager.Instance.OnCurrentBuildingChanged += BuildingManager_OnCurrentBuildingChanged;
+            Toggle(BuildingManager.Instance.CurrentBuilding);
         }
-    }
 
-    private void Hide() {
-        gameObject.SetActive(false);
-    }
+        private void BuildingManager_OnCurrentBuildingChanged(
+            object sender, BuildingManager.OnCurrentBuildingChangedEventsArgs e
+        ) {
+            Toggle(e.CurrentBuilding);
+        }
 
-    private void Show(Sprite sprite) {
-        gameObject.SetActive(true);
-        GhostSprite.GetComponent<SpriteRenderer>().sprite = sprite;
-    }
+        private void Toggle(BuildingSO currentBuilding) {
+            holder.BuildingType = currentBuilding;
+            if(currentBuilding == null) {
+                Hide();
+            } else {
+                Show(currentBuilding.Sprite);
+            }
+        }
+
+        private void Hide() {
+            gameObject.SetActive(false);
+        }
+
+        private void Show(Sprite sprite) {
+            gameObject.SetActive(true);
+            GhostSprite.GetComponent<SpriteRenderer>().sprite = sprite;
+        }
 
 
-    void Update() {
-        transform.position = CameraUtils.GetMousePosition();
+        void Update() {
+            transform.position = CameraUtils.GetMousePosition();
+        }
     }
 }

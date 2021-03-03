@@ -1,8 +1,9 @@
-using Assets.Foundation;
-using Assets.Foundation.CameraUtils;
-using Assets.Foundation.TransformUtils;
+using Assets.UnityFoundation.CameraUtils;
+using Assets.UnityFoundation.TransformUtils;
+using Assets.UnityFoundation.TimeUtils;
 using System;
 using UnityEngine;
+using Assets.GameManagers;
 
 namespace Assets.GameObjects.Enemies {
     public class EnemyWaveSpawner : MonoBehaviour {
