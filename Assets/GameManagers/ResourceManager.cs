@@ -36,6 +36,12 @@ public class ResourceManager : MonoBehaviour {
         OnResourceAmountChanged(this, EventArgs.Empty);
     }
 
+    public void AddResource(ResourceTypeSO resource, int amount) {
+        resources[resource] += amount;
+
+        OnResourceAmountChanged(this, EventArgs.Empty);
+    }
+
     internal void SpendResources(List<ResourceAmount> resourceCost) {
         foreach(var resourceAmount in resourceCost) {
             resources[resourceAmount.resource] -= resourceAmount.amount;

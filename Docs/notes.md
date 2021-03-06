@@ -174,3 +174,11 @@
   - Girar no sentido horário com a rotação começando de cima
 - _ Corrigir problema com instanciar várias construções enquanto estão sendo construidas
 - &check; Adicionar o shader
+
+# Demolish building
+
+- Criar o botão de demolição
+- Adicionar esse botão em cada building
+- Fazer o player recuperar um pouco dos recursos
+- Fazer o botão ser visível apenas no mouseover
+  - OnMouseEnter, OnMouseExit
