@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameObjectsTags {
+namespace Assets.GameManagers {
+    public static class GameObjectsTags {
 
-    public static readonly string HQ = "HQ";
+        public static readonly string HQ = "HQ";
 
+    }
 }

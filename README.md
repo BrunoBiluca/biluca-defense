@@ -84,3 +84,9 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 - Adição de efeito e tempo para a construção das edificações, utilizando shaders para criar um efeito legal
 
 ![](Docs/building_constructor.PNG)
+
+# Dia 20
+
+- Adição do botão para destruir as edificações criadas e assim recuperar um pouco de recurso
+
+![](Docs/minimap.PNG)

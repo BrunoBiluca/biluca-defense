@@ -9,7 +9,7 @@ namespace Assets.GameObjects.Buildings {
 
         private Transform demolishbuilding;
 
-        void Start() {
+        void Awake() {
             var baseHealth = GetComponent<BuildingTypeHolder>().BuildingType.baseHealth;
 
             HealthSystem = GetComponent<HealthSystem>();

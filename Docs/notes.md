@@ -182,3 +182,10 @@
 - Fazer o player recuperar um pouco dos recursos
 - Fazer o botão ser visível apenas no mouseover
   - OnMouseEnter, OnMouseExit
+
+# Minimap
+
+- Criar uma outra camera para renderizar o mapa
+- Criar uma textura para o output da camera
+- Criar um elemento do UI para exibir
+- Criar uma layer para o minimap

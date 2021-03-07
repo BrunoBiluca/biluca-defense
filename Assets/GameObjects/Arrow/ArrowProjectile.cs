@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.GameObjects.Arrow {
-    public class Arrow : MonoBehaviour {
+    public class ArrowProjectile : MonoBehaviour {
         private const float speed = 20f;
         private const float timeOfLive = 3f;
 

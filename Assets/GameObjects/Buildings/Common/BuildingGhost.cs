@@ -19,7 +19,7 @@ namespace Assets.GameObjects.Buildings {
         }
 
         private void BuildingManager_OnCurrentBuildingChanged(
-            object sender, BuildingManager.OnCurrentBuildingChangedEventsArgs e
+            object sender, BuildingManager.OnCurrentBuildingChangedEventArgs e
         ) {
             Toggle(e.CurrentBuilding);
         }

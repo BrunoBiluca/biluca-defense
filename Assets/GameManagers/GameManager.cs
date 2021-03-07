@@ -1,20 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+namespace Assets.GameManagers {
+    public class GameManager : MonoBehaviour {
 
-    public static GameManager Instance { get; private set; }
+        public static GameManager Instance { get; private set; }
 
-    [SerializeField]
-    private bool debugMode;
-    public bool DebugMode {
-        get { return debugMode; } 
-        set { debugMode = value; }
+        [SerializeField]
+        private bool debugMode;
+        public bool DebugMode {
+            get { return debugMode; }
+            set { debugMode = value; }
+        }
+
+        private void Awake() {
+            Instance = this;
+        }
+
+        internal void LoadGame() {
+            SceneManager.LoadScene("GameScene");
+        }
     }
-
-    private void Awake() {
-        Instance = this;
-    }
-
 }

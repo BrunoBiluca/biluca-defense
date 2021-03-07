@@ -1,7 +1,6 @@
 using Assets.GameObjects.Buildings;
-using Assets.UnityFoundation;
+using Assets.UI;
 using Assets.UnityFoundation.CameraUtils;
-using Assets.UnityFoundation.TransformUtils;
 using System;
 using UnityEngine;
 
@@ -10,8 +9,8 @@ namespace Assets.GameManagers {
 
         public static BuildingManager Instance { get; private set; }
 
-        public event EventHandler<OnCurrentBuildingChangedEventsArgs> OnCurrentBuildingChanged;
-        public class OnCurrentBuildingChangedEventsArgs : EventArgs {
+        public event EventHandler<OnCurrentBuildingChangedEventArgs> OnCurrentBuildingChanged;
+        public class OnCurrentBuildingChangedEventArgs : EventArgs {
             public BuildingSO CurrentBuilding { get; set; }
         }
 
@@ -22,10 +21,10 @@ namespace Assets.GameManagers {
                 currentBuilding = value;
                 OnCurrentBuildingChanged?.Invoke(
                     this,
-                    new OnCurrentBuildingChangedEventsArgs {
+                    new OnCurrentBuildingChangedEventArgs {
                         CurrentBuilding = currentBuilding
                     }
-                ); ;
+                );
             }
         }
 
@@ -49,6 +48,14 @@ namespace Assets.GameManagers {
             Instance = this;
 
             buildingFactory = Resources.Load<BuildingFactorySO>("building_factory_lvl_0");
+        }
+
+        private void Start() {
+            var hqs = GameObject.FindGameObjectsWithTag(GameObjectsTags.HQ);
+            hqReference = hqs[0].transform;
+            hqReference.GetComponent<Building>().HealthSystem.OnDied += (sender, args) => {
+                GameOverUI.Instance.Show();
+            };
         }
 
         void Update() {

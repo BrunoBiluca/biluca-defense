@@ -33,7 +33,7 @@ public class BuildingTypeSelectUI : MonoBehaviour {
     }
 
     private void BuildingManager_OnCurrentBuildingChanged(
-        object sender, BuildingManager.OnCurrentBuildingChangedEventsArgs e
+        object sender, BuildingManager.OnCurrentBuildingChangedEventArgs e
     ) {
         UpdateBuildingSelectUI();
     }
