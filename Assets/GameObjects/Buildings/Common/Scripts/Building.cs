@@ -17,6 +17,11 @@ namespace Assets.GameObjects.Buildings {
 
             demolishbuilding = transform.Find("demolishButton");
             HideDemolishButton();
+
+            transform
+                .Find("buildingRepairButton")
+                .GetComponent<BuildingRepairButton>()
+                .Hide();
         }
 
         private void OnMouseEnter() {
@@ -35,6 +40,5 @@ namespace Assets.GameObjects.Buildings {
             if(demolishbuilding == null) return;
             demolishbuilding.gameObject.SetActive(false);
         }
-
     }
 }

@@ -189,3 +189,8 @@
 - Criar uma textura para o output da camera
 - Criar um elemento do UI para exibir
 - Criar uma layer para o minimap
+
+# Criar o botão de repair
+
+- Exibir o botão sempre que a vida não estiver cheia
+- Adicionar um tooltip para informar insuficiência de gold quando usuário tentar fazer um repair

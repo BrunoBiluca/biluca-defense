@@ -51,7 +51,13 @@ namespace Assets.GameManagers {
         }
 
         private void Start() {
+            CreateHQReference();
+        }
+
+        private void CreateHQReference() {
             var hqs = GameObject.FindGameObjectsWithTag(GameObjectsTags.HQ);
+            if(hqs.Length == 0) return;
+
             hqReference = hqs[0].transform;
             hqReference.GetComponent<Building>().HealthSystem.OnDied += (sender, args) => {
                 GameOverUI.Instance.Show();

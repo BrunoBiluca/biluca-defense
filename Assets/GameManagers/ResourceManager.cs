@@ -5,7 +5,6 @@ using UnityEngine;
 namespace Assets.GameManagers {
     public class ResourceManager : MonoBehaviour {
         public static ResourceManager Instance { get; set; }
-
         private Dictionary<ResourceTypeSO, int> resources;
 
         [SerializeField]
@@ -27,6 +26,14 @@ namespace Assets.GameManagers {
             });
         }
 
+        public bool CanAfford(ResourceAmount resource) {
+            if(resources[resource.resource] - resource.amount >= 0) {
+                return true;
+            }
+
+            return false;
+        }
+
         public int GetResourceAmount(ResourceTypeSO resource) {
             return resources[resource];
         }
@@ -43,7 +50,12 @@ namespace Assets.GameManagers {
             OnResourceAmountChanged(this, EventArgs.Empty);
         }
 
-        internal void SpendResources(List<ResourceAmount> resourceCost) {
+        public void SpendResource(ResourceAmount resourceAmount) {
+            resources[resourceAmount.resource] -= resourceAmount.amount;
+            OnResourceAmountChanged(this, EventArgs.Empty);
+        }
+
+        public void SpendResources(List<ResourceAmount> resourceCost) {
             foreach(var resourceAmount in resourceCost) {
                 resources[resourceAmount.resource] -= resourceAmount.amount;
             }
