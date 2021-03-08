@@ -1,3 +1,4 @@
+using Assets.GameManagers;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,7 +14,7 @@ public class OptionsUI : MonoBehaviour {
     private AudioSource musicManager;
 
     void Awake() {
-        musicSubmenu = transform.Find("optionsPanel").Find("musicSubmenu");
+        musicSubmenu = transform.Find("musicSubmenu");
         musicSubmenu.Find("musicVolumePlus").GetComponent<Button>().onClick.AddListener(() => {
             var currentValue = musicManager.volume += .1f;
             musicSubmenu
@@ -27,7 +28,7 @@ public class OptionsUI : MonoBehaviour {
                 .GetComponent<TMP_Text>().text = ((int)(currentValue*10)).ToString();
         });
 
-        soundSubmenu = transform.Find("optionsPanel").Find("soundSubmenu");
+        soundSubmenu = transform.Find("soundSubmenu");
         soundSubmenu.Find("volumePlus").GetComponent<Button>().onClick.AddListener(() => {
             var currentValue = SoundManager.Instance.IncreaseVolume(.1f);
             soundSubmenu
@@ -39,6 +40,11 @@ public class OptionsUI : MonoBehaviour {
             soundSubmenu
                 .Find("currentValue")
                 .GetComponent<TMP_Text>().text = ((int)(currentValue*10)).ToString();
+        });
+
+        transform.Find("mainMenuButton").GetComponent<Button>().onClick.AddListener(() => {
+            Time.timeScale = 1f;
+            GameManager.Instance.LoadMainMenu();
         });
     }
 

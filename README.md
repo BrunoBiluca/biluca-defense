@@ -90,3 +90,8 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 - Adição do botão para destruir as edificações criadas e assim recuperar um pouco de recurso
 
 ![](Docs/minimap.PNG)
+
+# Dia 21
+
+- Criação do menu de opções para o usuário controlar o áudio
+- Criação do menu principal do jogo
