@@ -45,6 +45,8 @@ namespace Assets.GameObjects.Arrow {
             if(enemy == null) return;
 
             const float damageAmount = 10f;
+
+            SoundManager.Instance.PlaySound(Sound.EnemyHit);
             enemy.HealthSystem.Damage(damageAmount);
             Destroy(gameObject);
         }

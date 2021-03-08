@@ -22,7 +22,7 @@ namespace Assets.GameObjects.Enemies {
         public EventHandler OnWaveChanged;
         public int WaveCounter { get; private set; } = 0;
         private readonly int enemiesPerWave = 5;
-        private readonly int enemiesIncreasePerWave = 3;
+        private readonly int enemiesIncreasePerWave = 2;
 
         public Timer EnemiesSpawnerTimer { get; private set; }
 
@@ -53,6 +53,7 @@ namespace Assets.GameObjects.Enemies {
 
             var enemiesThisWave = enemiesPerWave + enemiesIncreasePerWave * WaveCounter;
             for(int i = 0; i < enemiesThisWave; i++) {
+                WaittingCoroutine.RealSeconds(.3f);
                 Instantiate(
                     enemyPrefab,
                     PositionUtils.GetRandomCirclePosition(spawnPosition, 1f),

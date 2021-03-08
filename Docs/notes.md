@@ -194,3 +194,7 @@
 
 - Exibir o botão sempre que a vida não estiver cheia
 - Adicionar um tooltip para informar insuficiência de gold quando usuário tentar fazer um repair
+
+# Adicionar os sons
+
+- _ Criar o SoundManager

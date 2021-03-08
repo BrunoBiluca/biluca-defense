@@ -39,7 +39,10 @@ namespace Assets.GameObjects.Enemies {
             var building = collision.gameObject.GetComponent<Building>();
             if(building == null) return;
 
+            SoundManager.Instance.PlaySound(Sound.BuildingDamage);
             building.HealthSystem.Damage(10f);
+
+            SoundManager.Instance.PlaySound(Sound.EnemyDie);
             Destroy(gameObject);
         }
     }

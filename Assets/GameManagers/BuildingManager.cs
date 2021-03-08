@@ -60,6 +60,7 @@ namespace Assets.GameManagers {
 
             hqReference = hqs[0].transform;
             hqReference.GetComponent<Building>().HealthSystem.OnDied += (sender, args) => {
+                SoundManager.Instance.PlaySound(Sound.GameOver);
                 GameOverUI.Instance.Show();
             };
         }
@@ -70,6 +71,7 @@ namespace Assets.GameManagers {
                 var canBuildResponse = new CanBuildRules(CurrentBuilding).CanBuild(buildingPosition);
                 if(canBuildResponse.Result) {
                     ResourceManager.Instance.SpendResources(CurrentBuilding.resourceCost);
+                    SoundManager.Instance.PlaySound(Sound.BuildingPlaced);
                     BuildingConstructor.Create(CurrentBuilding, buildingPosition);
                 } else {
                     canBuildResponse.Reason.IfSome(

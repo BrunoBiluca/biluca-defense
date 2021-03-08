@@ -14,6 +14,9 @@ namespace Assets.GameObjects.Buildings {
 
             HealthSystem = GetComponent<HealthSystem>();
             HealthSystem.Setup(baseHealth);
+            HealthSystem.OnDied += (sender, args) => {
+                SoundManager.Instance.PlaySound(Sound.BuildingDestroyed);
+            };
 
             demolishbuilding = transform.Find("demolishButton");
             HideDemolishButton();
