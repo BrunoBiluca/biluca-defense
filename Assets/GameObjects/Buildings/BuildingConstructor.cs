@@ -15,14 +15,13 @@ namespace Assets.GameObjects.Buildings {
         }
 
         private BoxCollider2D boxCollider2D;
-        private BuildingTypeHolder typeHolder;
+        private BuildingSO buildingType;
         private SpriteRenderer sprite;
         private ProgressCircle progressCircle;
 
         void Awake() {
             boxCollider2D = GetComponent<BoxCollider2D>();
             sprite = transform.Find("sprite").GetComponent<SpriteRenderer>();
-            typeHolder = GetComponent<BuildingTypeHolder>();
             progressCircle = transform.Find("progressCircle").GetComponent<ProgressCircle>();
         }
 
@@ -31,27 +30,26 @@ namespace Assets.GameObjects.Buildings {
             boxCollider2D.size = prefabCollider.size;
             boxCollider2D.offset = prefabCollider.offset;
 
+            this.buildingType = buildingType;
             sprite.sprite = buildingType.Sprite;
-
-            typeHolder.BuildingType = buildingType;
             progressCircle.Setup(buildingType.constructionTime);
         }
 
         private float constructionTimer = 0f;
         private void Update() {
-            if(typeHolder.BuildingType == null) return;
+            if(buildingType == null) return;
 
             constructionTimer += Time.deltaTime;
             sprite.material.SetFloat(
-                "_Progress", constructionTimer / typeHolder.BuildingType.constructionTime
+                "_Progress", constructionTimer / buildingType.constructionTime
             );
-            if(constructionTimer >= typeHolder.BuildingType.constructionTime) {
+            if(constructionTimer >= buildingType.constructionTime) {
                 ConstructBuilding();
             }
         }
 
         private void ConstructBuilding() {
-            Instantiate(typeHolder.BuildingType.Prefab, transform.position, Quaternion.identity);
+            Instantiate(buildingType.Prefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

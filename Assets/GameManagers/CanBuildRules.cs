@@ -40,6 +40,11 @@ public class CanBuildRules {
             if(buildingTypeHolder != null) {
                 return true;
             }
+
+            var buildingConstruction = building.GetComponent<BuildingConstructor>();
+            if(buildingConstruction != null) {
+                return true;
+            }
         }
 
         return false;

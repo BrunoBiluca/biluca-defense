@@ -95,3 +95,6 @@ Build a awesome Tower Defense game, with a lot of systems and effects
 
 - Criação do menu de opções para o usuário controlar o áudio
 - Criação do menu principal do jogo
+
+![](Docs/menu_options.PNG)
+![](Docs/main_menu.PNG)
