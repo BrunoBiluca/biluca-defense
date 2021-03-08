@@ -40,4 +40,16 @@ public class SoundManager : MonoBehaviour {
     public void PlaySound(Sound sound) {
         audioSource.PlayOneShot(availableSounds[sound]);
     }
+
+    public float IncreaseVolume(float v) {
+        var volume = audioSource.volume + v;
+        audioSource.volume = Mathf.Clamp01(volume);
+        return audioSource.volume;
+    }
+
+    public float DecreaseVolume(float v) {
+        var volume = audioSource.volume - v;
+        audioSource.volume = Mathf.Clamp01(volume);
+        return audioSource.volume;
+    }
 }

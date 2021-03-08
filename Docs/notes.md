@@ -198,3 +198,6 @@
 # Adicionar os sons
 
 - _ Criar o SoundManager
+
+# Adicionar menu de opções para controlar volume
+
