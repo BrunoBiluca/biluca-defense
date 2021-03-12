@@ -11,7 +11,6 @@ namespace Assets.GameObjects.Buildings {
             var constructionPlaceholder = Instantiate(
                 GameAssets.Instance.constructionPlaceHolderPrefab, position, Quaternion.identity
             );
-            int a = 0;
             constructionPlaceholder.GetComponent<BuildingConstructor>().Setup(buildingType);
         }
 
