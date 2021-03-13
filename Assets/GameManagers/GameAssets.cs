@@ -14,6 +14,8 @@ namespace Assets.GameManagers {
         }
 
         public GameObject constructionPlaceHolderPrefab;
-
+        public GameObject enemyDiedParticles;
+        public GameObject buildingPlacedParticles;
+        public GameObject buildingDestroyedParticles;
     }
 }

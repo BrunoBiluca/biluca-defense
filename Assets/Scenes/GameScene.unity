@@ -833,6 +833,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   constructionPlaceHolderPrefab: {fileID: 5701177008043331177, guid: 605600713a80d8d45abfa6ec258d3569, type: 3}
+  enemyDiedParticles: {fileID: 2586196222451070026, guid: fa53ff3e077270e4d8a679c8fa7de07f, type: 3}
+  buildingPlacedParticles: {fileID: 8295742346658607647, guid: 4ac58936248f3144db274df6c4356236, type: 3}
+  buildingDestroyedParticles: {fileID: 7186901638340864668, guid: 5731055b57af76744aa0f260d9e0e788, type: 3}
 --- !u!1001 &114210739
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2317,7 +2320,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -8439,7 +8442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04f026b64d06694dac8e0872e552b43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  edgeOffset: 100
+  edgeOffset: 50
   movimentSpeed: 30
 --- !u!1 &1633111286
 GameObject:

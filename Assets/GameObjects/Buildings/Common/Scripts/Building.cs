@@ -1,3 +1,4 @@
+using Assets.GameManagers;
 using Assets.UnityFoundation.HealthSystem;
 using LanguageExt;
 using UnityEngine;
@@ -15,6 +16,11 @@ namespace Assets.GameObjects.Buildings {
             HealthSystem = GetComponent<HealthSystem>();
             HealthSystem.Setup(baseHealth);
             HealthSystem.OnDied += (sender, args) => {
+                Instantiate(
+                    GameAssets.Instance.buildingDestroyedParticles, 
+                    transform.position, 
+                    Quaternion.identity
+                );
                 SoundManager.Instance.PlaySound(Sound.BuildingDestroyed);
             };
 

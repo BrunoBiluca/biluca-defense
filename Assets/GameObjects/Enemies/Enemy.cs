@@ -20,6 +20,10 @@ namespace Assets.GameObjects.Enemies {
             var baseHealth = GetComponent<EnemyTypeHolder>().Enemy.baseHealth;
             HealthSystem = GetComponent<HealthSystem>();
             HealthSystem.Setup(baseHealth);
+
+            HealthSystem.OnDied += (sender, args) => {
+                Instantiate(GameAssets.Instance.enemyDiedParticles, transform.position, Quaternion.identity);
+            };
         }
 
         void Update() {
@@ -44,6 +48,8 @@ namespace Assets.GameObjects.Enemies {
 
             SoundManager.Instance.PlaySound(Sound.EnemyDie);
             Destroy(gameObject);
+            Instantiate(GameAssets.Instance.enemyDiedParticles, transform.position, Quaternion.identity);
         }
+
     }
 }

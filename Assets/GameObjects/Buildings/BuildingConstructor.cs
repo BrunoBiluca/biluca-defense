@@ -49,6 +49,8 @@ namespace Assets.GameObjects.Buildings {
         }
 
         private void ConstructBuilding() {
+            Instantiate(GameAssets.Instance.buildingPlacedParticles, 
+                transform.position, Quaternion.identity);
             Instantiate(buildingType.Prefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
