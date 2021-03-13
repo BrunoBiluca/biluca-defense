@@ -1,5 +1,6 @@
 using Assets.GameManagers;
 using Assets.UnityFoundation.HealthSystem;
+using Assets.UnityFoundation.PostProcessing;
 using LanguageExt;
 using UnityEngine;
 
@@ -15,6 +16,11 @@ namespace Assets.GameObjects.Buildings {
 
             HealthSystem = GetComponent<HealthSystem>();
             HealthSystem.Setup(baseHealth);
+
+            HealthSystem.OnTakeDamage += (sender, args) => {
+                CinemachineCameraShake.Instance.Shake();
+                ChromaticAberrationHandler.Instance.FullWeight();
+            };
             HealthSystem.OnDied += (sender, args) => {
                 Instantiate(
                     GameAssets.Instance.buildingDestroyedParticles, 
