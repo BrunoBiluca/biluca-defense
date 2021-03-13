@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum Sound {
     BuildingPlaced,
-    BuildingDamage,
+    BuildingDamaged,
     BuildingDestroyed,
     EnemyDie,
     EnemyHit,
@@ -26,7 +26,7 @@ public class SoundManager : MonoBehaviour {
 
         availableSounds = new Dictionary<Sound, AudioClip>();
         LoadSound(Sound.BuildingPlaced);
-        LoadSound(Sound.BuildingDamage);
+        LoadSound(Sound.BuildingDamaged);
         LoadSound(Sound.BuildingDestroyed);
         LoadSound(Sound.EnemyDie);
         LoadSound(Sound.EnemyHit);
