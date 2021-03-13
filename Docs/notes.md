@@ -199,5 +199,6 @@
 
 - _ Criar o SoundManager
 
-# Adicionar menu de opções para controlar volume
+# Polish
 
+- Adicionar limites das câmeras
