@@ -1,6 +1,6 @@
 using Assets.GameObjects.Buildings;
 using Assets.UI;
-using Assets.UnityFoundation.CameraUtils;
+using Assets.UnityFoundation.CameraScripts;
 using System;
 using UnityEngine;
 

@@ -1,5 +1,5 @@
 using Assets.UnityFoundation;
-using Assets.UnityFoundation.CameraUtils;
+using Assets.UnityFoundation.CameraScripts;
 using System;
 using System.Collections;
 using System.Collections.Generic;

@@ -201,4 +201,5 @@
 
 # Polish
 
-- Adicionar limites das câmeras
+- &check; Adicionar limites das câmeras
+- _ Adicionar edge scrolling

@@ -8391,6 +8391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1615374780}
   - component: {fileID: 1615374781}
+  - component: {fileID: 1615374782}
   m_Layer: 0
   m_Name: CameraHandler
   m_TagString: Untagged
@@ -8426,6 +8427,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 118185827}
+--- !u!114 &1615374782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615374779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e04f026b64d06694dac8e0872e552b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  edgeOffset: 100
+  movimentSpeed: 30
 --- !u!1 &1633111286
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 using Assets.GameManagers;
-using Assets.UnityFoundation.CameraUtils;
+using Assets.UnityFoundation.CameraScripts;
 using UnityEngine;
 
 namespace Assets.GameObjects.Buildings {
