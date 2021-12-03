@@ -1,7 +1,5 @@
 using Assets.GameManagers;
-using Assets.UnityFoundation.TimeUtils;
 using Assets.UnityFoundation.UI.ProgressElements.ProgressCircle;
-using System;
 using UnityEngine;
 
 namespace Assets.GameObjects.Buildings {
@@ -22,7 +20,7 @@ namespace Assets.GameObjects.Buildings {
         void Awake() {
             boxCollider2D = GetComponent<BoxCollider2D>();
             sprite = transform.Find("sprite").GetComponent<SpriteRenderer>();
-            progressCircle = transform.Find("progressCircle").GetComponent<ProgressCircle>();
+            progressCircle = transform.Find("progress_circle").GetComponent<ProgressCircle>();
         }
 
         private void Setup(BuildingSO buildingType) {

@@ -47,7 +47,7 @@ public class ResourcesUI : MonoBehaviour {
             var resourceTransform = Instantiate(resourceTemplate, transform);
             resourceTransform.gameObject.SetActive(true);
 
-            float offeset = -100f;
+            float offeset = -150f;
             resourceTransform
                 .GetComponent<RectTransform>()
                 .anchoredPosition = new Vector2(baseOffset + offeset * index++, 0);

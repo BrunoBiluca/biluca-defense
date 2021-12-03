@@ -20,11 +20,11 @@ MonoBehaviour:
   shortcut: S
   sprite: {fileID: 21300000, guid: 2263e91ebcd2a254dab5f4caccb4a7af, type: 3}
   resourceGeneratorConfig:
-    resourcesPerSecond: 1
+    resourcesPerSecond: 2
     maxResourceNodes: 2
-    detectionRadius: 6
+    detectionRadius: 16
     resourceType: {fileID: 11400000, guid: 23a8edfb90b0e7a48bd0208ea4736dfa, type: 2}
   resourceCost:
   - resource: {fileID: 11400000, guid: 8377ef6a579da6644b89f5c197cee4bc, type: 2}
-    amount: 20
+    amount: 100
   constructionTime: 10

@@ -1,7 +1,6 @@
 using Assets.GameManagers;
-using Assets.UnityFoundation.HealthSystem;
 using Assets.UnityFoundation.PostProcessing;
-using LanguageExt;
+using Assets.UnityFoundation.Systems.HealthSystem;
 using UnityEngine;
 
 namespace Assets.GameObjects.Buildings {

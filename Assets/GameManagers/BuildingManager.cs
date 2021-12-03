@@ -67,7 +67,7 @@ namespace Assets.GameManagers {
 
         void Update() {
             if(Input.GetMouseButtonDown(0)) {
-                var buildingPosition = CameraUtils.GetMousePosition();
+                var buildingPosition = CameraUtils.GetMousePosition2D();
                 var canBuildResponse = new CanBuildRules(CurrentBuilding).CanBuild(buildingPosition);
                 if(canBuildResponse.Result) {
                     ResourceManager.Instance.SpendResources(CurrentBuilding.resourceCost);

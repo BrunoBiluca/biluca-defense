@@ -1,8 +1,5 @@
-using Assets.UnityFoundation.HealthSystem;
-using Assets.UnityFoundation.TransformUtils;
 using Assets.GameObjects.Enemies;
-using System.Collections;
-using System.Collections.Generic;
+using Assets.UnityFoundation.Code;
 using UnityEngine;
 
 namespace Assets.GameObjects.Arrow {

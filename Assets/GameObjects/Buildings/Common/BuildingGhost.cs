@@ -44,7 +44,7 @@ namespace Assets.GameObjects.Buildings {
 
 
         void Update() {
-            transform.position = CameraUtils.GetMousePosition();
+            transform.position = CameraUtils.GetMousePosition2D();
         }
     }
 }

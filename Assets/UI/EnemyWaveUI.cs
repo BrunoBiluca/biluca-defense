@@ -1,7 +1,5 @@
 using Assets.GameObjects.Enemies;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -31,7 +29,7 @@ namespace Assets.UI {
 
         private void Update() {
             var timerValue = EnemyWaveSpawner.Instance
-                .EnemiesSpawnerTimer.GetCurrentTime().ToString("0.0");
+                .EnemiesSpawnerTimer.RemainingTime.ToString("0.0");
             waveTimerText.SetText($"Próxima wave: {timerValue}s");
         }
     }

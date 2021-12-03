@@ -1,6 +1,6 @@
-using Assets.UnityFoundation.TransformUtils;
 using Assets.GameObjects.Arrow;
 using Assets.GameObjects.Enemies;
+using Assets.UnityFoundation.Code;
 using UnityEngine;
 
 namespace Assets.GameObjects.Buildings {
@@ -33,10 +33,10 @@ namespace Assets.GameObjects.Buildings {
                 arrowSpawTimer = 0f;
 
                 targetFinder.Target
-                    .IfSome(target => {
+                    .Some(target => {
                         Instantiate(arrowPrefab, arrowSpawner.position, Quaternion.identity)
-                        .GetComponent<ArrowProjectile>()
-                        .Setup(target.gameObject.GetComponent<Enemy>());
+                            .GetComponent<ArrowProjectile>()
+                            .Setup(target.gameObject.GetComponent<Enemy>());
                     });
             }
 

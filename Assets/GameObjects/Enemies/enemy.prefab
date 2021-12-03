@@ -112,7 +112,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ebbfe0b094e2eb49869317969b4b77a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1477923427049345107}
+  setupOnStart: 0
+  healthBarComponent: {fileID: 0}
+  baseHealth: 0
+  destroyHealthBarOnDied: 0
+  destroyOnDied: 1
+  currentHealth: 0
+  layer: {fileID: 0}
 --- !u!114 &7969733176713352120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,11 +211,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9049053615807279754, guid: 8a449b94e5e0ab9479d0de9bad6ba9f4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 9049053615807279754, guid: 8a449b94e5e0ab9479d0de9bad6ba9f4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 9049053615807279754, guid: 8a449b94e5e0ab9479d0de9bad6ba9f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -262,14 +268,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9049053615807279754, guid: 8a449b94e5e0ab9479d0de9bad6ba9f4, type: 3}
   m_PrefabInstance: {fileID: 7384589937572868071}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1477923427049345107 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8284924476596256692, guid: 8a449b94e5e0ab9479d0de9bad6ba9f4, type: 3}
-  m_PrefabInstance: {fileID: 7384589937572868071}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 115e4e3c08b4f184eab64c84c541ce9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

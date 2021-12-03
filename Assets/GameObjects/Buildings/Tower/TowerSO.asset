@@ -22,11 +22,13 @@ MonoBehaviour:
   resourceGeneratorConfig:
     resourcesPerSecond: 0
     maxResourceNodes: 0
-    detectionRadius: 0
+    detectionRadius: 4
     resourceType: {fileID: 0}
   resourceCost:
   - resource: {fileID: 11400000, guid: 8377ef6a579da6644b89f5c197cee4bc, type: 2}
-    amount: 30
+    amount: 100
   - resource: {fileID: 11400000, guid: 23a8edfb90b0e7a48bd0208ea4736dfa, type: 2}
+    amount: 60
+  - resource: {fileID: 11400000, guid: 6d3c434f1bd36d949ab9036f374a3ca8, type: 2}
     amount: 20
   constructionTime: 6

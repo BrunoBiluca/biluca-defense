@@ -1,8 +1,4 @@
-using Assets.UnityFoundation;
 using Assets.UnityFoundation.CameraScripts;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.GameObjects.Enemies {
@@ -20,7 +16,7 @@ namespace Assets.GameObjects.Enemies {
         private void SpawEnemy() {
             Instantiate(
                 enemyPrefab,
-                CameraUtils.GetMousePosition(),
+                CameraUtils.GetMousePosition2D(),
                 Quaternion.identity
             );
         }

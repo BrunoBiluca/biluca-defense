@@ -1,7 +1,7 @@
 using Assets.GameManagers;
 using Assets.GameObjects.Buildings;
-using Assets.UnityFoundation.HealthSystem;
-using Assets.UnityFoundation.TransformUtils;
+using Assets.UnityFoundation.Code;
+using Assets.UnityFoundation.Systems.HealthSystem;
 using Assets.UnityFoundation.UI.Indicators;
 using UnityEngine;
 
@@ -31,12 +31,12 @@ namespace Assets.GameObjects.Enemies {
         }
 
         private void MovimentHandler() {
-            var movDirection = targetFinder.Target
-                .Some(target => (target.position - transform.position).normalized)
-                .None(Vector2.zero);
-
-            const float speed = 6f;
-            body.velocity = movDirection * speed;
+            targetFinder.Target
+                .Some(target => {
+                    var movDirection = (target.position - transform.position).normalized;
+                    const float speed = 6f;
+                    body.velocity = movDirection * speed;
+                });
         }
 
         private void OnCollisionEnter2D(Collision2D collision) {

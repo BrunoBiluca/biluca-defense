@@ -20,9 +20,9 @@ MonoBehaviour:
   shortcut: G
   sprite: {fileID: 21300000, guid: 8ead931dd91bff8489e75de9c414f17f, type: 3}
   resourceGeneratorConfig:
-    resourcesPerSecond: 1
+    resourcesPerSecond: 2
     maxResourceNodes: 1
-    detectionRadius: 8
+    detectionRadius: 16
     resourceType: {fileID: 11400000, guid: 6d3c434f1bd36d949ab9036f374a3ca8, type: 2}
   resourceCost:
   - resource: {fileID: 11400000, guid: 23a8edfb90b0e7a48bd0208ea4736dfa, type: 2}

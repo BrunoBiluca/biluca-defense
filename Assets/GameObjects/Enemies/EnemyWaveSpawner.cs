@@ -1,10 +1,10 @@
-using Assets.UnityFoundation.CameraScripts;
-using Assets.UnityFoundation.TransformUtils;
 using Assets.UnityFoundation.TimeUtils;
 using System;
 using UnityEngine;
 using Assets.GameManagers;
 using System.Collections;
+using Assets.UnityFoundation.Code;
+using Assets.UnityFoundation.Code.TimeUtils;
 
 namespace Assets.GameObjects.Enemies {
     public class EnemyWaveSpawner : MonoBehaviour {
@@ -16,6 +16,9 @@ namespace Assets.GameObjects.Enemies {
 
         [SerializeField]
         private GameObject emenySpawnIndicatorPrefab;
+
+        [SerializeField] float enemyWaveTimer;
+
         public GameObject SpawnIndicator { get; private set; }
 
         private Vector3 HQPosition;
@@ -34,7 +37,9 @@ namespace Assets.GameObjects.Enemies {
         void Start() {
             HQPosition = BuildingManager.Instance.HQReference.position;
 
-            EnemiesSpawnerTimer = new Timer("Enemies Spawner Timer", 10f, SpawnEnemies);
+            EnemiesSpawnerTimer = new Timer(enemyWaveTimer, SpawnEnemies)
+                .SetName("Enemies Spawner Timer")
+                .Start();
             OnWaveChanged?.Invoke(this, EventArgs.Empty);
         }
 
@@ -50,6 +55,8 @@ namespace Assets.GameObjects.Enemies {
                 Quaternion.identity
             );
             OnWaveChanged?.Invoke(this, EventArgs.Empty);
+
+            EnemiesSpawnerTimer.SetAmount(enemyWaveTimer - WaveCounter).Start();
 
             StartCoroutine(InstantiateEnemies(spawnPosition));
         }

@@ -1,9 +1,7 @@
+using Assets.UnityFoundation.Code;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TooltipUI : MonoBehaviour {
     public static TooltipUI Instance;
@@ -15,7 +13,6 @@ public class TooltipUI : MonoBehaviour {
 
     private TextMeshProUGUI text;
     private RectTransform rectTransform;
-    private RectTransform background;
 
     private TooltipTimer tooltipTimer;
 
@@ -23,23 +20,30 @@ public class TooltipUI : MonoBehaviour {
         Instance = this;
 
         rectTransform = GetComponent<RectTransform>();
-        background = transform.Find("background").GetComponent<RectTransform>();
 
         text = transform.Find("text").GetComponent<TextMeshProUGUI>();
+
+        tooltipTimer = new TooltipTimer();
+        tooltipTimer.Timer = 2f;
 
         Hide();
     }
 
     private void Update() {
         if(followMouse) {
-            var anchoredPosition = Input.mousePosition;
-            if(anchoredPosition.x + background.rect.width * 2 > canvasRectTransform.rect.width) {
-                anchoredPosition.x = canvasRectTransform.rect.width - background.rect.width * 2;
+            var newAnchoredPosition = new Vector2(
+                Input.mousePosition.x.Remap(0f, Screen.width, 0f, 1280f),
+                Input.mousePosition.y.Remap(0f, Screen.height, 0f, 720f)
+            );
+            var tooltipSizeX = newAnchoredPosition.x + rectTransform.rect.width;
+            if(tooltipSizeX > canvasRectTransform.rect.width) {
+                newAnchoredPosition.x = canvasRectTransform.rect.width - rectTransform.rect.width;
             }
-            if(anchoredPosition.y + background.rect.height > canvasRectTransform.rect.height) {
-                anchoredPosition.y = canvasRectTransform.rect.height - background.rect.height;
+            var tooltipeSizeY = newAnchoredPosition.y + rectTransform.rect.height;
+            if(tooltipeSizeY > canvasRectTransform.rect.height) {
+                newAnchoredPosition.y = canvasRectTransform.rect.height - rectTransform.rect.height;
             }
-            rectTransform.anchoredPosition = anchoredPosition;
+            rectTransform.anchoredPosition = newAnchoredPosition;
         }
 
         if(tooltipTimer != null) {
@@ -56,7 +60,7 @@ public class TooltipUI : MonoBehaviour {
         text.ForceMeshUpdate();
 
         var padding = new Vector2(8, 8);
-        background.sizeDelta = text.GetRenderedValues(false) + padding;
+        rectTransform.sizeDelta = text.GetRenderedValues(false) + padding;
     }
 
     public void Show(string tooltipText, TooltipTimer tooltipTimer = null) {
@@ -72,11 +76,11 @@ public class TooltipUI : MonoBehaviour {
 
     public class TooltipTimer {
         private float timer;
-        public float Timer { 
-            get { return timer; } 
+        public float Timer {
+            get { return timer; }
             set {
                 if(value <= 0) throw new ArgumentException();
-                timer = value; 
+                timer = value;
             }
         }
 

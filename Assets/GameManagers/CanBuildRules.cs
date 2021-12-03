@@ -1,29 +1,36 @@
 using Assets.GameManagers;
 using Assets.GameObjects.Buildings;
 using LanguageExt;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class CanBuildRules {
 
     private BuildingSO currentBuilding;
-    private const float constructionRadius = 18f;
+    private const float constructionRadius = 10f;
 
     public CanBuildRules(BuildingSO currentBuilding) {
         this.currentBuilding = currentBuilding;
     }
 
     public CanBuildResponse CanBuild(Vector3 position) {
-        if(currentBuilding == null) return CanBuildResponse.New(false);
-        if(EventSystem.current.IsPointerOverGameObject()) return CanBuildResponse.New(false);
-        if(HasBuildingBeneth(position)) return CanBuildResponse.New(false, "Area is not clear");
+        if(currentBuilding == null) 
+            return CanBuildResponse.New(false);
+
+        if(EventSystem.current.IsPointerOverGameObject()) 
+            return CanBuildResponse.New(false);
+
+        if(HasBuildingBeneth(position)) 
+            return CanBuildResponse.New(false, "Area is not clear");
+
         if(HasSameBuildingTypeClose(position))
             return CanBuildResponse.New(false, "Too close to another building from same type");
+
         if(!HasBuildingOnRangeForConstruction(position))
             return CanBuildResponse.New(false, "Too long from another building"); ;
-        if(!CanAfford()) return CanBuildResponse.New(false, "Not enougth resources, stranger");
+
+        if(!CanAfford()) 
+            return CanBuildResponse.New(false, "Not enougth resources, stranger");
 
         return CanBuildResponse.Ok();
     }

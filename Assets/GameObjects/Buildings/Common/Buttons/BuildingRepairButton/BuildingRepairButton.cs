@@ -1,8 +1,6 @@
 using Assets.GameManagers;
-using Assets.UnityFoundation.HealthSystem;
-using Assets.UnityFoundation.TimeUtils;
+using Assets.UnityFoundation.Systems.HealthSystem;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Assets.GameObjects.Buildings {
